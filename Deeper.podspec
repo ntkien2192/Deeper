@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Deeper'
   s.version          = '0.1.0'
-  s.summary          = 'Chúng tôi cố gắng tạo ra một thư viện về giao diện để có thể đáp ứng các nhu cầu công việc của một người lập trình viên từ chào mừng, đăng nhập đăng kí tới các chức năng phức tạp hơn như thông tin chi tiết và trang chủ'
+  s.summary          = 'Bộ giao diện tuyệt hảo cho phần mềm của bạn'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
