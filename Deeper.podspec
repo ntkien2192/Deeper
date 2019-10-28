@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Deeper'
-  s.version          = '0.2.0'
-  s.summary          = 'Bộ giao diện tuyệt hảo cho phần mềm của bạn'
+  s.version          = '0.3.0'
+  s.summary          = 'The perfect interface framework for your software'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Chúng tôi cố gắng tạo ra một thư viện về giao diện để có thể đáp ứng các nhu cầu công việc của một người lập trình viên từ chào mừng, đăng nhập đăng kí tới các chức năng phức tạp hơn như thông tin chi tiết và trang chủ
+TODO: We try to create a interface framework that can meet the needs of a programmer from welcome, sign-up to more complex functions such as details, master pages.
                        DESC
 
   s.homepage         = 'https://github.com/ntkien2192/Deeper'
@@ -30,6 +30,7 @@ TODO: Chúng tôi cố gắng tạo ra một thư viện về giao diện để 
 
   s.ios.deployment_target = '11.4'
   s.swift_version = '4.0'
+
   s.source_files = 'Deeper/Classes/**/*'
   
   # s.resource_bundles = {
@@ -37,7 +38,7 @@ TODO: Chúng tôi cố gắng tạo ra một thư viện về giao diện để 
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-   s.frameworks = 'UIKit'
+   s.frameworks = 'UIKit', 'MapKit'
    s.dependency 'RxSwift', '~> 5'
    s.dependency 'RxCocoa', '~> 5'
 end

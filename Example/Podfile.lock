@@ -1,32 +1,15 @@
 PODS:
-  - Deeper (0.1.2):
-    - RxCocoa (~> 5)
-    - RxSwift (~> 5)
-  - RxCocoa (5.0.1):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxRelay (5.0.1):
-    - RxSwift (~> 5)
-  - RxSwift (5.0.1)
+  - Deeper (0.1.0)
 
 DEPENDENCIES:
   - Deeper (from `../`)
-
-SPEC REPOS:
-  trunk:
-    - RxCocoa
-    - RxRelay
-    - RxSwift
 
 EXTERNAL SOURCES:
   Deeper:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Deeper: 5503a9bc035c9af1a31da9e23938086f9ae658e0
-  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
-  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  Deeper: dc14727f1dc7f83847bfd3641dff43bf27764f41
 
 PODFILE CHECKSUM: 3f2547c6f9e07ba94deca7735f38af5d9f613dbc
 
