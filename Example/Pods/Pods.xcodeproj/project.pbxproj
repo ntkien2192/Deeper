@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		0A33CFE5FB6F6884097180D1E514546F /* Deeper-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Deeper-Info.plist"; sourceTree = "<group>"; };
-		11AE5E68C052E05263BA4A40B6852176 /* Deeper.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Deeper.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		11AE5E68C052E05263BA4A40B6852176 /* Deeper.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Deeper.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		269C169A83D961D063C96D7BE5D4EBD9 /* Deeper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Deeper-prefix.pch"; sourceTree = "<group>"; };
 		2B2EE65173EA99D9022E2C22618B5DBD /* Pods-Deeper_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Deeper_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2C03385897A8D0A6C603EF37338D7CB5 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = Deeper/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
@@ -50,19 +50,19 @@
 		45BC18414E726DCF1172E3A38AABEC60 /* Deeper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Deeper.modulemap; sourceTree = "<group>"; };
 		46CBDD12209E0B35844B30204111212E /* Pods-Deeper_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Deeper_Tests-dummy.m"; sourceTree = "<group>"; };
 		487D7D69959F30FB750CB66DAB855808 /* Pods-Deeper_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Deeper_Tests-Info.plist"; sourceTree = "<group>"; };
-		54ECFDC5953DF8998DE5C5100746303A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		54ECFDC5953DF8998DE5C5100746303A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		581CCED89EDCA301101B8EBBDD527D8F /* Pods-Deeper_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Deeper_Example-umbrella.h"; sourceTree = "<group>"; };
 		5AEEA09BB128D574B6B8A7A7EA718E7A /* Pods-Deeper_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Deeper_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		65F05085CA2C5EB01D204A484DC00526 /* Deeper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Deeper-dummy.m"; sourceTree = "<group>"; };
 		6AF038DFB1B7345C1C6022FA23D59DDA /* Pods-Deeper_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Deeper_Tests-umbrella.h"; sourceTree = "<group>"; };
 		6FC9E6CE70B2B6F64E825F3A860985DE /* Pods-Deeper_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Deeper_Example.modulemap"; sourceTree = "<group>"; };
-		7460AA1BA9D13700E829B8EA15325DAA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		81A083543E66AA964C321FAD3CCA3AFA /* Pods_Deeper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Deeper_Example.framework; path = "Pods-Deeper_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		997906A3F1DBCD059BB96CCA2A7AA854 /* Pods_Deeper_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Deeper_Tests.framework; path = "Pods-Deeper_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7460AA1BA9D13700E829B8EA15325DAA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		81A083543E66AA964C321FAD3CCA3AFA /* Pods_Deeper_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Deeper_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		997906A3F1DBCD059BB96CCA2A7AA854 /* Pods_Deeper_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Deeper_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8729076BFA9A30366F307AB3ECC887 /* Pods-Deeper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Deeper_Example.release.xcconfig"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AEC6FA4A0F3878FECAF8200507ECF5C7 /* Pods-Deeper_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Deeper_Example-dummy.m"; sourceTree = "<group>"; };
-		B775EB93BAB1C98C8441C51D5D919C38 /* Deeper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Deeper.framework; path = Deeper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B775EB93BAB1C98C8441C51D5D919C38 /* Deeper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Deeper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7E0F1965AC47EB12C0F4BBB4A45F00E /* Pods-Deeper_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Deeper_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		B949ECE47F922414AE1F3B5289F0C28A /* Pods-Deeper_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Deeper_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		C45C622C33B2DDEA092D8611A6E29805 /* Pods-Deeper_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Deeper_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -314,7 +314,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1110;
+				TargetAttributes = {
+					DC4552372C5570ED0DE042A9A1F1BFB7 = {
+						LastSwiftMigration = 1110;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -322,6 +327,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = FDCB453D88A7C3C2CFF122FEB63BE39A /* Products */;
@@ -408,7 +414,6 @@
 			baseConfigurationReference = 43C35947FB4CFA8949F32BDF8DD225F8 /* Pods-Deeper_Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -443,7 +448,6 @@
 			baseConfigurationReference = C45C622C33B2DDEA092D8611A6E29805 /* Pods-Deeper_Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -527,8 +531,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -539,7 +542,6 @@
 			baseConfigurationReference = 9B8729076BFA9A30366F307AB3ECC887 /* Pods-Deeper_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -574,7 +576,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1C7F27BDB167A2C6231D139AF8D2BA6 /* Deeper.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -596,7 +597,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -608,7 +609,6 @@
 			baseConfigurationReference = D13D6AAE8FF41567C53D00A81CCF9A91 /* Pods-Deeper_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -642,7 +642,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1C7F27BDB167A2C6231D139AF8D2BA6 /* Deeper.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -664,7 +663,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
