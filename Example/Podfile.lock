@@ -1,0 +1,16 @@
+PODS:
+  - Deeper (0.1.0)
+
+DEPENDENCIES:
+  - Deeper (from `../`)
+
+EXTERNAL SOURCES:
+  Deeper:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Deeper: a4beed448b1af91c34e2a3c9e355a07dc3332647
+
+PODFILE CHECKSUM: 3f2547c6f9e07ba94deca7735f38af5d9f613dbc
+
+COCOAPODS: 1.8.4

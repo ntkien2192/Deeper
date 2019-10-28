@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Deeper_Example' do
+  pod 'Deeper', :path => '../'
+
+  target 'Deeper_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
