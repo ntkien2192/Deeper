@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Deeper'
-  s.version          = '0.3.0'
+  s.version          = '0.3.1'
   s.summary          = 'The perfect interface framework for your software'
 
 # This description is used to generate tags and improve search results.
@@ -38,7 +38,7 @@ TODO: We try to create a interface framework that can meet the needs of a progra
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-   s.frameworks = 'UIKit', 'MapKit'
-   s.dependency 'RxSwift', '~> 5'
-   s.dependency 'RxCocoa', '~> 5'
+#   s.frameworks = 'UIKit', 'MapKit'
+#   s.dependency 'RxSwift', '~> 5'
+#   s.dependency 'RxCocoa', '~> 5'
 end

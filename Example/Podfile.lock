@@ -1,5 +1,5 @@
 PODS:
-  - Deeper (0.1.0)
+  - Deeper (0.3.1)
 
 DEPENDENCIES:
   - Deeper (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Deeper: dc14727f1dc7f83847bfd3641dff43bf27764f41
+  Deeper: 569c41b70122a533e53602f8b6fda6285191484b
 
 PODFILE CHECKSUM: 3f2547c6f9e07ba94deca7735f38af5d9f613dbc
 
