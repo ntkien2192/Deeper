@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Deeper'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'Bộ giao diện tuyệt hảo cho phần mềm của bạn'
 
 # This description is used to generate tags and improve search results.
@@ -29,7 +29,7 @@ TODO: Chúng tôi cố gắng tạo ra một thư viện về giao diện để 
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '11.4'
-  s.swift_version = '5.0'
+  s.swift_version = '4.0'
   s.source_files = 'Deeper/Classes/**/*'
   
   # s.resource_bundles = {
@@ -37,6 +37,6 @@ TODO: Chúng tôi cố gắng tạo ra một thư viện về giao diện để 
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+   s.frameworks = 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
