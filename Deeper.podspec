@@ -38,5 +38,6 @@ TODO: Chúng tôi cố gắng tạo ra một thư viện về giao diện để 
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
    s.frameworks = 'UIKit'
-   s.dependency 'AFNetworking', '~> 2.3'
+   s.dependency 'RxSwift', '~> 5'
+   s.dependency 'RxCocoa', '~> 5'
 end
