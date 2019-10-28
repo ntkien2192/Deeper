@@ -1,15 +1,42 @@
 PODS:
-  - Deeper (0.1.0)
+  - AFNetworking (2.7.0):
+    - AFNetworking/NSURLConnection (= 2.7.0)
+    - AFNetworking/NSURLSession (= 2.7.0)
+    - AFNetworking/Reachability (= 2.7.0)
+    - AFNetworking/Security (= 2.7.0)
+    - AFNetworking/Serialization (= 2.7.0)
+    - AFNetworking/UIKit (= 2.7.0)
+  - AFNetworking/NSURLConnection (2.7.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.7.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.7.0)
+  - AFNetworking/Security (2.7.0)
+  - AFNetworking/Serialization (2.7.0)
+  - AFNetworking/UIKit (2.7.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - Deeper (0.1.1):
+    - AFNetworking (~> 2.3)
 
 DEPENDENCIES:
   - Deeper (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
 
 EXTERNAL SOURCES:
   Deeper:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Deeper: a4beed448b1af91c34e2a3c9e355a07dc3332647
+  AFNetworking: 8dd5f9b9691e09186393069a12cc3b5ed7c8b511
+  Deeper: e4ef1fbe75ddc30e3916ff6414a6e5f543b50812
 
 PODFILE CHECKSUM: 3f2547c6f9e07ba94deca7735f38af5d9f613dbc
 
