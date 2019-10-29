@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Deeper'
-  s.version          = '0.3.2'
+  s.version          = '0.3.3'
   s.summary          = 'The perfect interface framework for your software'
 
 # This description is used to generate tags and improve search results.
@@ -29,7 +29,7 @@ TODO: We try to create a interface framework that can meet the needs of a progra
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '11.4'
-  s.swift_version = '4.0'
+  s.swift_version = '5.0'
 
   s.source_files = 'Deeper/Classes/**/*'
   
@@ -39,6 +39,6 @@ TODO: We try to create a interface framework that can meet the needs of a progra
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
 #   s.frameworks = 'UIKit', 'MapKit'
-#   s.dependency 'RxSwift', '~> 5'
-#   s.dependency 'RxCocoa', '~> 5'
+   s.dependency 'RxSwift', '~> 5'
+   s.dependency 'RxCocoa', '~> 5'
 end
