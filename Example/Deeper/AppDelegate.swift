@@ -7,15 +7,29 @@
 //
 
 import UIKit
+import Deeper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Override point for customization after application launch
+        
+        let theme = Theme.deeper
+    
+//        let startData = [Start.key.imageBase64String.rawValue: Image.loading.value?.base64].json
+
+        Deeper.on(window, theme: theme) {
+            _ = Deeper
+                .open(Start.on()?.setup({ store in
+                store.image.accept(Image.deeperLogo.value)
+                    store.animation.accept(false)
+            }))
+        }
+        
+        
         return true
     }
 

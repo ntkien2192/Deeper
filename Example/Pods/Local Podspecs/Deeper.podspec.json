@@ -20,12 +20,24 @@
   },
   "swift_versions": "5.0",
   "source_files": "Deeper/Classes/**/*",
+  "resource_bundles": {
+    "Deeper": [
+      "Deeper/Classes/**/*.{storyboard,xib}",
+      "Deeper/Assets/**/*.{xcassets,pdf}"
+    ]
+  },
   "dependencies": {
     "RxSwift": [
       "~> 5"
     ],
     "RxCocoa": [
       "~> 5"
+    ],
+    "RealmSwift": [
+
+    ],
+    "SDWebImage/WebP": [
+
     ]
   },
   "swift_version": "5.0"

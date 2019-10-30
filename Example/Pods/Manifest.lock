@@ -1,32 +1,60 @@
 PODS:
   - Deeper (0.3.3):
+    - RealmSwift
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
+    - SDWebImage/WebP
+  - libwebp (1.0.3):
+    - libwebp/demux (= 1.0.3)
+    - libwebp/mux (= 1.0.3)
+    - libwebp/webp (= 1.0.3)
+  - libwebp/demux (1.0.3):
+    - libwebp/webp
+  - libwebp/mux (1.0.3):
+    - libwebp/demux
+  - libwebp/webp (1.0.3)
+  - Realm (3.20.0):
+    - Realm/Headers (= 3.20.0)
+  - Realm/Headers (3.20.0)
+  - RealmSwift (3.20.0):
+    - Realm (= 3.20.0)
   - RxCocoa (5.0.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
   - RxRelay (5.0.1):
     - RxSwift (~> 5)
   - RxSwift (5.0.1)
+  - SDWebImage/Core (4.4.7)
+  - SDWebImage/WebP (4.4.7):
+    - libwebp (< 2.0, >= 0.5)
+    - SDWebImage/Core
 
 DEPENDENCIES:
   - Deeper (from `../`)
 
 SPEC REPOS:
   trunk:
+    - libwebp
+    - Realm
+    - RealmSwift
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SDWebImage
 
 EXTERNAL SOURCES:
   Deeper:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Deeper: 7e680b5dde3081d41671eebfef887729994deb25
+  Deeper: a3e83bd264f36cdd0da3b8eb9ad6280cd270afc0
+  libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
+  Realm: 8b2ca5bc6479a91f379b6b42b5922e396cd5ba5a
+  RealmSwift: 1949ef26a279e1845bd51d591b9103adfcd121df
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
 
 PODFILE CHECKSUM: 3f2547c6f9e07ba94deca7735f38af5d9f613dbc
 

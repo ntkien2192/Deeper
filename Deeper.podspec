@@ -33,12 +33,14 @@ TODO: We try to create a interface framework that can meet the needs of a progra
 
   s.source_files = 'Deeper/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'Deeper' => ['Deeper/Assets/*.png']
-  # }
+   s.resource_bundles = {
+     'Deeper' => ['Deeper/Classes/**/*.{storyboard,xib}', 'Deeper/Assets/**/*.{xcassets,pdf}']
+   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
 #   s.frameworks = 'UIKit', 'MapKit'
    s.dependency 'RxSwift', '~> 5'
    s.dependency 'RxCocoa', '~> 5'
+   s.dependency 'RealmSwift'
+   s.dependency 'SDWebImage/WebP'
 end
