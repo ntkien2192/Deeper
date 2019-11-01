@@ -91,4 +91,10 @@ extension Observable {
             observer?.onNext(value)
         })
     }
+    
+    func to(_ relay: BehaviorRelay<Element>) -> Disposable {
+        return self.on(type: .singleSync, { value in
+            relay.accept(value)
+        })
+    }
 }

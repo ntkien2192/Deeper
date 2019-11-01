@@ -9,10 +9,21 @@
 import UIKit
 
 extension String {
-//    var value: String {
-//        return self.localized()
-//    }
-//
+    var json: Json? {
+        guard let data = self.data(using: String.Encoding.utf8) else { return nil }
+        do { return try Json(data: data) } catch { return nil }
+    }
+    
+    func toJson(_ key: String = "value") -> Json? {
+        return "{\"\(key)\":\"\(self)\"}".json
+    }
+}
+
+extension String {
+    var value: String {
+        return self.localized()
+    }
+
     var image: UIImage? {
         if let data = Data(base64Encoded: self) {
             return UIImage(data: data)

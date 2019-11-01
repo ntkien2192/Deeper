@@ -121,7 +121,7 @@ extension WindowPresentation where Self: UIViewController {
                 Window.share.setRootViewController(self, options: options)
             } else {
                 Window.share.rootViewController = self
-            }
+            }                    
         }
         
         let queue = TaskQueue()

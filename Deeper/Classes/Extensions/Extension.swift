@@ -10,14 +10,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-//extension StringProtocol {
-//    func nsRange(from range: Range<Index>) -> NSRange {
-//        return .init(range, in: self)
-//    }
-//}
+extension StringProtocol {
+    func nsRange(from range: Range<Index>) -> NSRange {
+        return .init(range, in: self)
+    }
+}
 
 extension NSObject {
-    static var name: String {
+    var name: String {
         return String(describing: self)
     }
 
@@ -27,6 +27,10 @@ extension NSObject {
     
     var detail: String {
         return "\(type(of: self)) · \(address)"
+    }
+    
+    var className: String {
+        return "\(type(of: self))"
     }
 }
 
@@ -39,13 +43,21 @@ extension CGFloat {
     }
 }
 
-extension String {
-    var json: Json? {
-        guard let data = self.data(using: String.Encoding.utf8) else { return nil }
-        do { return try Json(data: data) } catch { return nil }
+extension NSMutableAttributedString {
+    func add(string: String, textColor: UIColor? = nil, font: UIFont? = nil) -> NSMutableAttributedString {
+        self.append(NSAttributedString(string: string, attributes:
+            [NSAttributedString.Key.foregroundColor: textColor as Any, NSAttributedString.Key.font: font as Any]))
+        return self
     }
     
-    func toJson(_ key: String = "value") -> Json? {
-        return "{\"\(key)\":\"\(self)\"}".json
+    func add(targets: [String], textColor: UIColor? = nil, font: UIFont? = nil) -> NSMutableAttributedString {
+        let content = self.string
+        targets.forEach { target in
+            if let range = content.range(of: target) {
+                self.addAttributes([NSAttributedString.Key.foregroundColor: textColor as Any,
+                NSAttributedString.Key.font: font as Any], range: content.nsRange(from: range))
+            }
+        }
+        return self
     }
 }

@@ -1,0 +1,15 @@
+//
+//  Store.swift
+//  Futurep
+//
+//  Created by Nguyễn Trung Kiên on 9/14/19.
+//  Copyright © 2019 Nguyễn Trung Kiên. All rights reserved.
+//
+
+import UIKit
+import RxSwift
+import RxCocoa
+
+public class Store: NSObject {
+    let database = Database.share
+}

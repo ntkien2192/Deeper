@@ -7,24 +7,33 @@
 
 import UIKit
 
-public enum Theme: Int {
-    case deeper = 0
+public enum Theme: String {
+    case hemera = "Hemera"
+    case erebus = "Erebus"
+    
+    public func setup() {
+        switch self {
+        case .hemera:
+            Font.register(for: ["NotoSansJP-Bold", "NotoSansJP-Regular"])
+        case .erebus:
+            Font.register(for: ["NotoSansJP-Black"])
+        }
+    }
 }
 
-extension Theme {
-    init(_ index: Int) {
-        switch index {
-        case 0:
-            self = .deeper
-        default:
-            self = .deeper
+public extension Theme {
+    var value: Int {
+        switch self {
+        case .hemera: return 0
+        case .erebus: return 1
         }
     }
     
-    var value: Int {
+    var backgroundColor: UIColor {
         switch self {
-        case .deeper:
-            return 0
+        case .hemera: return UIColor.hemera.background
+        case .erebus: return UIColor.erebus.background
         }
     }
 }
+

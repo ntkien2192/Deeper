@@ -22,7 +22,7 @@
   "source_files": "Deeper/Classes/**/*",
   "resource_bundles": {
     "Deeper": [
-      "Deeper/Classes/**/*.{storyboard,xib}",
+      "Deeper/Classes/**/*.{storyboard,xib,otf}",
       "Deeper/Assets/**/*.{xcassets,pdf}"
     ]
   },

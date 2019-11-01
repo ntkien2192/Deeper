@@ -22,7 +22,6 @@ public class StartStore: Store {
         return value
     }
     
-    public let image = BehaviorRelay<UIImage?>(value: nil)
-    public let imageUrl = BehaviorRelay<String?>(value: nil)
-    public let animation = BehaviorRelay<Bool>(value: true)
+    public let config = BehaviorRelay<StartConfig>(value: StartConfig())
+    public let viewModel = BehaviorRelay<StartViewModel>(value: StartViewModel())
 }

@@ -65,39 +65,39 @@ class Control: NSObject {
             control.type.accept(type)
             control.status.accept(status)
             
-            switch (type, status) {
-            case (.button, .none):
-                control.backgroundColor.accept(UIColor.fWhite)
-                control.shadowColor.accept(UIColor.fWhite)
-                control.color.accept(UIColor.fTextStrong)
-            case (.button, .primary):
-                control.backgroundColor.accept(UIColor.fBlue)
-                control.shadowColor.accept(UIColor.fBlueShadow)
-                control.color.accept(UIColor.fWhite)
-            case (.button, .secondary):
-                control.backgroundColor.accept(UIColor.fBlack)
-                control.shadowColor.accept(UIColor.fBlackShadow)
-                control.color.accept(UIColor.fBorder)
-            case (.button, .success):
-                control.backgroundColor.accept(UIColor.fGreen)
-                control.shadowColor.accept(UIColor.fGreenShadow)
-                control.color.accept(UIColor.fWhite)
-            case(.button, .info):
-                control.backgroundColor.accept(UIColor.fLight)
-                control.shadowColor.accept(UIColor.fLightShadow)
-                control.color.accept(UIColor.fTextStrong)
-            case (.button, .warning):
-                control.backgroundColor.accept(UIColor.fYellow)
-                control.shadowColor.accept(UIColor.fYellowShadow)
-                control.color.accept(UIColor.fTextStrong)
-            case (.button, .danger):
-                control.backgroundColor.accept(UIColor.fRed)
-                control.shadowColor.accept(UIColor.fRedShadow)
-                control.color.accept(UIColor.fWhite)
-            case (.button, .disable):
-                control.backgroundColor.accept(UIColor.fLight)
-                control.shadowColor.accept(UIColor.fClear)
-                control.color.accept(UIColor.fLightShadow)
+//            switch (type, status) {
+//            case (.button, .none):
+//                control.backgroundColor.accept(UIColor.fWhite)
+//                control.shadowColor.accept(UIColor.fWhite)
+//                control.color.accept(UIColor.fTextStrong)
+//            case (.button, .primary):
+//                control.backgroundColor.accept(UIColor.fBlue)
+//                control.shadowColor.accept(UIColor.fBlueShadow)
+//                control.color.accept(UIColor.fWhite)
+//            case (.button, .secondary):
+//                control.backgroundColor.accept(UIColor.fBlack)
+//                control.shadowColor.accept(UIColor.fBlackShadow)
+//                control.color.accept(UIColor.fBorder)
+//            case (.button, .success):
+//                control.backgroundColor.accept(UIColor.fGreen)
+//                control.shadowColor.accept(UIColor.fGreenShadow)
+//                control.color.accept(UIColor.fWhite)
+//            case(.button, .info):
+//                control.backgroundColor.accept(UIColor.fLight)
+//                control.shadowColor.accept(UIColor.fLightShadow)
+//                control.color.accept(UIColor.fTextStrong)
+//            case (.button, .warning):
+//                control.backgroundColor.accept(UIColor.fYellow)
+//                control.shadowColor.accept(UIColor.fYellowShadow)
+//                control.color.accept(UIColor.fTextStrong)
+//            case (.button, .danger):
+//                control.backgroundColor.accept(UIColor.fRed)
+//                control.shadowColor.accept(UIColor.fRedShadow)
+//                control.color.accept(UIColor.fWhite)
+//            case (.button, .disable):
+//                control.backgroundColor.accept(UIColor.fLight)
+//                control.shadowColor.accept(UIColor.fClear)
+//                control.color.accept(UIColor.fLightShadow)
                 
                 
 //            case (.text, .none):
@@ -124,8 +124,8 @@ class Control: NSObject {
 //            case (.text, .disable):
 //                control.backgroundColor.accept(UIColor.fRed)
 //                control.color.accept(UIColor.fWhite)
-            default: break
-            }
+//            default: break
+//            }
          
             control.handle = handle
             

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Deeper'
-  s.version          = '0.3.3'
+  s.version          = '0.3.4'
   s.summary          = 'The perfect interface framework for your software'
 
 # This description is used to generate tags and improve search results.
@@ -34,7 +34,7 @@ TODO: We try to create a interface framework that can meet the needs of a progra
   s.source_files = 'Deeper/Classes/**/*'
   
    s.resource_bundles = {
-     'Deeper' => ['Deeper/Classes/**/*.{storyboard,xib}', 'Deeper/Assets/**/*.{xcassets,pdf}']
+     'Deeper' => ['Deeper/Classes/**/*.{storyboard,xib,otf}', 'Deeper/Assets/**/*.{xcassets,pdf}']
    }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

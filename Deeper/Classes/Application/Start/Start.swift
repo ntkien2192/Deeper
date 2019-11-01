@@ -19,32 +19,35 @@ public class Start: Application {
         return app
     }
     
-    public func setup(_ handle: ((StartStore) -> Void)? = nil) -> Start {
+    public func bind(_ handle: ((StartStore) -> Void)? = nil) -> Start {
         handle?(store)
         return self
     }
     
     override init() {
         super.init()
-        
-        let theme = store.database.metadata.theme.value
+        let theme = Deeper.share.theme
         
         switch theme {
-        case .deeper:
-            let view = Storyboard.start.get(StartViewController.self)!
-            _ = view.wake().on(completed: { [weak self] in
-                _ = self?.store.imageUrl.on({ imageUrl in
-                    view.imageView.set(imageUrl)
-                })
-                _ = self?.store.image.on({ image in
-                    view.imageView.set(placeholder: image)
-                })
-                
-            })
-            
+        case .hemera:
+            let view = Storyboard.start.get(HemeraStartViewController.self)!
+            _ = view.viewModel.activity.on { [weak self] activity in
+                if activity == .callClose {
+                    self?.state.accept(.close)
+                }
+            }
             let screen = Screen(.onNavigation(view, hideNavigationBar: true))
-            _ = store.animation.to(screen.animation)
+            _ = store.config.value.animation.to(screen.animation)
+            prepare(screen)
+        case .erebus:
+            let view = Storyboard.start.get(ErebusStartViewController.self)!
+            let screen = Screen(.onNavigation(view, hideNavigationBar: true))
+            _ = store.config.value.animation.to(screen.animation)
             prepare(screen)
         }
+    }
+    
+    override func clearStore() {
+        store.clear()
     }
 }

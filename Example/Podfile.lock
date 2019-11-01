@@ -47,7 +47,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Deeper: a3e83bd264f36cdd0da3b8eb9ad6280cd270afc0
+  Deeper: dfb4321760f931cecafc01b142597a6498ea6860
   libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
   Realm: 8b2ca5bc6479a91f379b6b42b5922e396cd5ba5a
   RealmSwift: 1949ef26a279e1845bd51d591b9103adfcd121df

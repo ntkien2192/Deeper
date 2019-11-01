@@ -11,32 +11,45 @@ import RxCocoa
 
 public class Deeper: NSObject {
     static let share: Deeper = { return Deeper() }()
+    
     let store = Store()
+    var theme = Theme.hemera
+    let statusBarStyle = BehaviorRelay<Any?>(value: nil)
+    let queues = BehaviorRelay<[BusinessQueue]>(value: [])
     
     override init() {
         super.init()
-        print("   ┌──────────────┘")
+        print("   ┌───────────────────┘")
         print("   └ [APPPUSH PREPARE] ┐·················· [\(self.detail)]")
-        print("   │    ┌──────────────┘")
+        print("   ┌───────────────────┘")
+        print("   └ [WINDOW  PREPARE] ┐")
+        print("   │    ┬    ┬    ┌────┘")
     }
     
-    let queues = BehaviorRelay<[BusinessQueue]>(value: [])
+    public class func setup(_ theme: Theme = .hemera) {
+        print("   ┌──────────────┘")
+        print("   └ [THEME   PREPARE] ┐·················· [\(theme.rawValue)]")
+        Deeper.share.theme = theme
+        theme.setup()
+    }
     
-    public class func on(_ window: UIWindow?, theme: Theme = .deeper, handle: Handle) {
+    public class func on(_ window: UIWindow?, theme: Theme = .hemera, handle: Handle) {
+        print("[DEEPER  PREPARE] ┐")
+        Deeper.setup(theme)
         
-        Deeper.share.store.database.metadata.theme.accept(theme)
-        Deeper.share.store.database.metadata.saveToDB()
-        
-        print("[FUTUREP PREPARE] ┐")
         if let view = window?.rootViewController {
+            view.view.backgroundColor = theme.backgroundColor
             _ = view.waked().on(completed: {
                 print("   └──────────────┘\n")
-                print("[FUTUREP   START] ┐")
+                print("[DEEPER    START] ┐")
+                print("   ┌──────────────┘")
+                print("   └ [APPPUSH PREPARE] ┐·················· [\(Deeper.share.detail)]")
+                print("   │    ┌──────────────┘")
                 handle?()
             })
         }
     }
-    
+
     public class func open(_ application: Application?) -> BusinessQueue {
         if let application = application {
             let appPush = Deeper.share
