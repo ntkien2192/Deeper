@@ -8,5 +8,8 @@
 import UIKit
 
 public class StartConfig: ApplicationConfig {
-
+    public override init() {
+        super.init()
+        animation.accept(false)
+    }
 }

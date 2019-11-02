@@ -37,16 +37,20 @@ public class Deeper: NSObject {
         print("[DEEPER  PREPARE] ┐")
         Deeper.setup(theme)
         
-        if let view = window?.rootViewController {
-            view.view.backgroundColor = theme.backgroundColor
-            _ = view.waked().on(completed: {
-                print("   └──────────────┘\n")
-                print("[DEEPER    START] ┐")
-                print("   ┌──────────────┘")
-                print("   └ [APPPUSH PREPARE] ┐·················· [\(Deeper.share.detail)]")
-                print("   │    ┌──────────────┘")
-                handle?()
-            })
+        if let window = window {
+            Window.share = window
+            
+            if let view = window.rootViewController {
+                view.view.backgroundColor = theme.backgroundColor
+                _ = view.waked().on(completed: {
+                    print("   └──────────────┘\n")
+                    print("[DEEPER    START] ┐")
+                    print("   ┌──────────────┘")
+                    print("   └ [APPPUSH PREPARE] ┐·················· [\(Deeper.share.detail)]")
+                    print("   │    ┌──────────────┘")
+                    handle?()
+                })
+            }
         }
     }
 

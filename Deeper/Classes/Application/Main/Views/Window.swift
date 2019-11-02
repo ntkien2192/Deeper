@@ -22,8 +22,8 @@ enum WindowStatus {
     case none
 }
 
-class Window {
-    static let share: UIWindow = {
+public class Window {
+    public static var share: UIWindow = {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.backgroundColor = .clear
         window.windowLevel = UIWindow.Level(windowLevel)
@@ -49,8 +49,8 @@ protocol WindowStack {
 }
 
 protocol WindowPresentation: class, WindowStack {
-    func present(animated: Bool, handle: Handle)
-    func dismiss(animated: Bool, handle: Handle)
+    func presenterPresent(animated: Bool, handle: Handle)
+    func presenterDismiss(animated: Bool, handle: Handle)
 }
 
 extension WindowPresentation {
@@ -88,7 +88,7 @@ extension WindowPresentation where Self: UIViewController {
         }
     }
     
-    func present(animated: Bool = true, handle: Handle = nil) {
+    func presenterPresent(animated: Bool = true, handle: Handle = nil) {
         func presentController() {
             guard let currentPresented = Window.share.rootViewController else {
                 completedProcedure()
@@ -97,12 +97,10 @@ extension WindowPresentation where Self: UIViewController {
             
             Window.stack.append(self)
             if currentPresented.canDismiss == true {
-                currentPresented.dismiss(animated: animated, handle: handle)
+                currentPresented.presenterDismiss(animated: animated, handle: handle)
             } else {
                 self.modalPresentationStyle = .fullScreen
-                currentPresented.present(self, animated: true) {
-                    handle?()
-                }
+                currentPresented.present(self, animated: animated) { handle?() }
             }
         }
         
@@ -119,9 +117,12 @@ extension WindowPresentation where Self: UIViewController {
                 options.background = .snapshot
                 options.style = .easeOut
                 Window.share.setRootViewController(self, options: options)
+                DispatchQueue.main.asyncAfter(deadline: .now() + options.duration, execute: { handle?() })
             } else {
                 Window.share.rootViewController = self
-            }                    
+                Window.share.makeKeyAndVisible()
+                handle?()
+            }
         }
         
         let queue = TaskQueue()
@@ -131,7 +132,7 @@ extension WindowPresentation where Self: UIViewController {
         queue.run()
     }
     
-    func dismiss(animated: Bool = false, handle: Handle = nil) {
+    func presenterDismiss(animated: Bool = false, handle: Handle = nil) {
         func dismissController() {
             if Window.share.rootViewController === self {
                 if animated {
@@ -141,6 +142,7 @@ extension WindowPresentation where Self: UIViewController {
                     }, completion: { completed in
                         Window.dropRootViewController()
                         completedProcedure()
+                        handle?()
                     })
                 } else {
                     Window.share.alpha = 0
@@ -148,7 +150,7 @@ extension WindowPresentation where Self: UIViewController {
                     completedProcedure()
                 }
             } else if Window.stack.contains(where: { $0 === self }) {
-                self.dismiss()
+                self.dismiss(animated: animated, handle: handle)
                 Window.stack = Window.stack.filter() { !($0 === self) }
             }
         }
@@ -156,7 +158,7 @@ extension WindowPresentation where Self: UIViewController {
         func completedProcedure() {
             if let controller = Window.stack.sorted(by: {$0.priority > $1.priority}).first {
                 Window.stack = Window.stack.filter({ $0 !== controller })
-                controller.present(animated: animated, handle: handle)
+                controller.presenterPresent(animated: animated, handle: handle)
             } else {
                 handle?()
             }
@@ -171,19 +173,32 @@ extension WindowPresentation where Self: UIViewController {
 }
 
 extension WindowPresentation where Self: UIView {
-    func present(animated: Bool = true, handle: Handle = nil) {
-        guard let currentPresented = Window.share.rootViewController else {
-            return
+    func presenterPresent(animated: Bool = true, handle: Handle = nil) {
+        let queue = TaskQueue()
+        queue.tasks +=! { [weak self] in
+            if let self = self {
+                guard let currentPresented = Window.share.rootViewController else {
+                    return
+                }
+                guard let view = UIViewController.topController(currentPresented) else {
+                    currentPresented.view.add(self, handle: handle)
+                    return
+                }
+                view.view.add(self, handle: handle)
+            }
         }
-        guard let view = UIViewController.topController(currentPresented) else {
-            currentPresented.view.add(self, handle: handle)
-            return
-        }
-        view.view.add(self, handle: handle)
+        queue.run()
+
     }
     
-    func dismiss(animated: Bool = false, handle: Handle = nil) {
-        self.dismiss(delay: 0.0, handle: handle)
+    func presenterDismiss(animated: Bool = false, handle: Handle = nil) {
+        let queue = TaskQueue()
+        queue.tasks +=! { [weak self] in
+            if let self = self {
+                self.dismiss(delay: 0.0, handle: handle)
+            }
+        }
+        queue.run()
     }
 }
 

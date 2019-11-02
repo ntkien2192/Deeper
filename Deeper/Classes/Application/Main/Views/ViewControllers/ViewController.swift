@@ -201,16 +201,16 @@ extension UIViewController: WindowPresentation {
         }
     }
     
-    func dismiss(_ handle: Handle = nil) {
+    func dismiss(animated: Bool = true, handle: Handle = nil) {
         if let navigationController = self.navigationController {
             CATransaction.begin()
             CATransaction.setCompletionBlock {
                 handle?()
             }
-            _ = navigationController.popViewController(animated: true)
+            _ = navigationController.popViewController(animated: animated)
             CATransaction.commit()
         } else {
-            self.dismiss(animated: true, completion: {
+            self.dismiss(animated: animated, completion: {
                 handle?()
             })
         }

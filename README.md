@@ -19,6 +19,22 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'Deeper'
 ```
+### Step 1
+
+Import Deeper to  AppDelegate
+```import UIKit
+import Deeper
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+```
+
+ or SceneDelegate
+```import UIKit
+import Deeper
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+```
 
 ## Author
 

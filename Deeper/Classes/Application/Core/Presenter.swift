@@ -27,7 +27,7 @@ class Presenter: NSObject {
 //                        return
 //                    }
                 case .onNavigation:
-                    screen.navigation.value?.present(animated: screen.animation.value, handle: handle)
+                    screen.navigation.value?.presenterPresent(animated: screen.animation.value, handle: handle)
                     return
                     
                     
@@ -61,9 +61,7 @@ class Presenter: NSObject {
 //                        view.dismiss(handle: handle)
 //                    }
                 case .onNavigation:
-                    if let view = screen.navigation.value {
-                        view.dismiss(handle: handle)
-                    }
+                    screen.navigation.value?.presenterDismiss(handle: handle)
 //                case .rawViewController:
 //                    if let view = screen.viewController.value {
 //                        view.dismiss(handle: handle)

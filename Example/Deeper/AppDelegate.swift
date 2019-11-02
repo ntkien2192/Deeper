@@ -18,17 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch
         
         let theme = Theme.hemera
-    
-//        let startData = [Start.key.imageBase64String.rawValue: Image.loading.value?.base64].json
 
         Deeper.on(window, theme: theme) {
             _ = Deeper
                 .open(Start.on()?.bind({ store in
-                    let image = Image(Image.assest.logo.value)
-                    let copyrightInfo = Content("Power of Whale land", targets: ["Whale land"], displayType: .info)
-                    store.viewModel.value.image.accept(image)
-                    store.viewModel.value.copyrightInfo.accept(copyrightInfo)
-                    store.config.value.animation.accept(false)
+//                    let image = Image(Image.assest.logo.value)
+//                    let copyrightInfo = Content("Power of Whale land", targets: ["Whale land"], displayType: .info)
+//                    store.viewModel.value.image.accept(image)
+//                    store.viewModel.value.copyrightInfo.accept(copyrightInfo)
+//                    store.config.value.animation.accept(true)
                 }))
         }
         

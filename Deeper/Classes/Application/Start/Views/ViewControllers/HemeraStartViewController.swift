@@ -40,8 +40,8 @@ class HemeraStartViewController: ViewController {
         }
         
         _ = wake().on(completed: { [weak self] in
-            self?.imageView.setAnimation({
-                self?.imageView.dismiss(delay: 0.2, handle: {
+            self?.imageView.dismissAnimation({
+                self?.imageView.dismiss(delay: 0.1, handle: {
                     print("   │    │    │    └ [CONTROLLER  CALL] ··· [Close] -> [\(self?.detail ?? "")]")
                     self?.viewModel.activity.accept(.callClose)
                 })

@@ -16,11 +16,18 @@ enum StartViewActivity {
 
 public class StartViewModel: ViewModel {
     public let image = BehaviorRelay<Image?>(value: nil)
-//    public let imageUrl = BehaviorRelay<String?>(value: nil)
     public let copyrightInfo = BehaviorRelay<Content?>(value: nil)
-    
     let activity = BehaviorRelay<StartViewActivity>(value: .none)
 
+    public override init() {
+        super.init()
+        let image = Image(Image.assest.logo.value)
+        self.image.accept(image)
+        
+        let copyrightInfo = Content("Power of Whale land", targets: ["Whale land"], displayType: .info)
+        self.copyrightInfo.accept(copyrightInfo)
+    }
+    
     func response() -> Observable<StartViewActivity> {
         return Observable.create { [weak self] observer -> Disposable in
             _ = self?.activity.to(observer)

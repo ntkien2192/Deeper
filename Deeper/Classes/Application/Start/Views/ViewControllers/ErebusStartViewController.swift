@@ -18,16 +18,25 @@ class ErebusStartViewController: ViewController {
     
     override func viewDidLoad() {
         _ = viewModel.image.on({ [weak self] image in
-            self?.imageView.set(placeholder: image?.image.value)
-            self?.imageView.set(image?.imageUrl.value)
-            if let size = image?.size.value {
-                self?.imageView.sizeThatFits(size)
+            if let image = image {
+                self?.po(setup: image.detail)
+                if let imageUrl = image.imageUrl.value {
+                    self?.imageView.set(imageUrl)
+                }
+                if let image = image.image.value {
+                    self?.imageView.set(placeholder: image)
+                }
+                if let size = image.size.value {
+                    self?.imageView.constraints.get(NSLayoutConstraint.Attribute.height)?.constant = size.height
+                    self?.imageView.constraints.get(NSLayoutConstraint.Attribute.width)?.constant = size.width
+                }
             }
         })
         
         _ = wake().on(completed: { [weak self] in
-            self?.imageView.setAnimation({
-                self?.imageView.dismiss(delay: 0.2, handle: {
+            self?.imageView.dismissAnimation({
+                self?.imageView.dismiss(delay: 1, handle: {
+                    print("   │    │    │    └ [CONTROLLER  CALL] ··· [Close] -> [\(self?.detail ?? "")]")
                     self?.viewModel.activity.accept(.callClose)
                 })
             })
