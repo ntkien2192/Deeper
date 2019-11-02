@@ -22,7 +22,8 @@ pod 'Deeper'
 ### Step 1
 
 Import Deeper to  AppDelegate
-```import UIKit
+```
+import UIKit
 import Deeper
 
 @UIApplicationMain
@@ -30,11 +31,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ```
 
  or SceneDelegate
-```import UIKit
+```
+import UIKit
 import Deeper
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 ```
+
+### Step 2
+
+Use it your way
+```
+let theme = Theme.hemera
+
+Deeper.on(window, theme: theme) {
+    _ = Deeper .open(Start.on())
+}
+```
+
+Add the following command if you use SceneDelegate
+```
+guard let window = window else { return }
+```
+
 
 ## Author
 
