@@ -13,6 +13,8 @@ import RxSwift
 public enum ContentDisplayType {
     case body
     case info
+    case title
+    case subTitle
 }
 
 public enum ContentStatus {
@@ -30,8 +32,16 @@ public class Content: Value {
     let targets = BehaviorRelay<[String]>(value: [])
     let displayType = BehaviorRelay<ContentDisplayType>(value: .body)
     let status = BehaviorRelay<ContentStatus>(value: .primary)
+
+    public init(_ value: String = "") {
+        super.init()
+        self.type.accept(.string)
+        self.value.accept(value)
+    }
     
     public init(_ value: String = "", targets: [String] = [], displayType: ContentDisplayType = .body, status: ContentStatus = .primary) {
+        super.init()
+        self.type.accept(.string)
         self.value.accept(value)
         self.targets.accept(targets)
         self.displayType.accept(displayType)
@@ -39,7 +49,7 @@ public class Content: Value {
     }
     
     var attributedValue: NSMutableAttributedString {
-        let theme = Deeper.share.theme
+        let theme = Deeper.share.config.value.theme.value
         let strings = NSMutableAttributedString()
         let content = self.value.value ?? ""
         
@@ -95,5 +105,17 @@ public class Content: Value {
     
     class func paste() -> String? {
         return UIPasteboard.general.string
+    }
+}
+
+public class ContentGroup {
+    let title = BehaviorRelay<Content?>(value: nil)
+    let subTitle = BehaviorRelay<Content?>(value: nil)
+    let body = BehaviorRelay<Content?>(value: nil)
+    
+    init(title: Content, subTitle: Content, body: Content) {
+        self.title.accept(title)
+        self.subTitle.accept(subTitle)
+        self.body.accept(body)
     }
 }

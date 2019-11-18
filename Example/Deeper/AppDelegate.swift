@@ -17,19 +17,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch
         
-        let theme = Theme.hemera
-
-        Deeper.on(window, theme: theme) {
-            _ = Deeper
-                .open(Start.on()?.bind({ store in
+        _ = Deeper.on(window) { deeper in
+            _ = deeper.config { config in
+                config.set(theme: Theme.hemera)
+            }
+            
+            _ = deeper.bind { store in
+                
+            }
+            
+            let start = Start.on()
+//                .config({ config in
+//                    config.set(animation: true)
+//                }).bind({ viewModel in
 //                    let image = Image(Image.assest.logo.value)
 //                    let copyrightInfo = Content("Power of Whale land", targets: ["Whale land"], displayType: .info)
-//                    store.viewModel.value.image.accept(image)
-//                    store.viewModel.value.copyrightInfo.accept(copyrightInfo)
-//                    store.config.value.animation.accept(true)
-                }))
+//                    viewModel.set(image: image)
+//                    viewModel.set(copyrightInfo: copyrightInfo)
+//                })
+            
+            let welcome = Welcome.on()
+            
+            _ = deeper
+                .open(start)
+                .open(welcome)
         }
-        
         
         return true
     }

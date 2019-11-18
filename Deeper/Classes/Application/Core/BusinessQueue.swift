@@ -47,7 +47,7 @@ public class BusinessQueue: NSObject {
         }
     }
     
-    public func then(_ application: Application?, handle: Handle = nil) -> BusinessQueue {
+    public func open(_ application: Application?, handle: Handle = nil) -> BusinessQueue {
         if let application = application {
             
             if let application = self.applications.value.included(application) {
@@ -88,7 +88,7 @@ public class BusinessQueue: NSObject {
                     case .active:
                         Presenter.open(application)
                     case .closeThen(let app):
-                        _ = self?.then(app, handle: {
+                        _ = self?.open(app, handle: {
                             application.state.accept(.close)
                         })
                     case .close:
@@ -119,8 +119,10 @@ public class BusinessQueue: NSObject {
             print("   │    │    ┌────────────┘")
             application.state.accept(.active)
             _ = application.wake().on(completed: {
-                if let subApplication = application.subApplication.value.first {
-                    subApplication.run()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    if let subApplication = application.subApplication.value.first {
+                        subApplication.run()
+                    }
                 }
             })
         } else {

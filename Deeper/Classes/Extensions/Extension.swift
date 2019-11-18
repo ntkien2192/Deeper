@@ -35,8 +35,8 @@ extension NSObject {
 }
 
 extension CGFloat {
-    func bound(max: CGFloat, min: CGFloat, isUpSide: Bool = false) -> CGFloat {
-        if isUpSide {
+    func bound(max: CGFloat, min: CGFloat, isUpSideDown: Bool = false) -> CGFloat {
+        if isUpSideDown {
             return -(self - max) > max ? max : (-(self - max) < min ? min : -(self - max))
         }
         return self > max ? max : (self < min ? min : self)

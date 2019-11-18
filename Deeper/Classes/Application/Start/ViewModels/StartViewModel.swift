@@ -9,16 +9,16 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-enum StartViewActivity {
+public enum StartActivity {
     case none
     case callClose
 }
 
 public class StartViewModel: ViewModel {
-    public let image = BehaviorRelay<Image?>(value: nil)
-    public let copyrightInfo = BehaviorRelay<Content?>(value: nil)
-    let activity = BehaviorRelay<StartViewActivity>(value: .none)
-
+    let image = BehaviorRelay<Image?>(value: nil)
+    let copyrightInfo = BehaviorRelay<Content?>(value: nil)
+    let activity = BehaviorRelay<StartActivity>(value: .none)
+    
     public override init() {
         super.init()
         let image = Image(Image.assest.logo.value)
@@ -28,10 +28,11 @@ public class StartViewModel: ViewModel {
         self.copyrightInfo.accept(copyrightInfo)
     }
     
-    func response() -> Observable<StartViewActivity> {
-        return Observable.create { [weak self] observer -> Disposable in
-            _ = self?.activity.to(observer)
-            return Disposables.create()
-        }
+    public func set(image: Image) {
+        self.image.accept(image)
+    }
+    
+    public func set(copyrightInfo: Content) {
+        self.copyrightInfo.accept(copyrightInfo)
     }
 }

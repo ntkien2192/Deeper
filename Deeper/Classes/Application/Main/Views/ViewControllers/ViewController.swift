@@ -26,7 +26,6 @@ public enum StatusBarStyle {
 }
 
 public class ViewController: UIViewController {
-    
     public var statusBarStyle = BehaviorRelay<StatusBarStyle>(value: .dark)
     public override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation { return .fade }
     public override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -202,18 +201,9 @@ extension UIViewController: WindowPresentation {
     }
     
     func dismiss(animated: Bool = true, handle: Handle = nil) {
-        if let navigationController = self.navigationController {
-            CATransaction.begin()
-            CATransaction.setCompletionBlock {
-                handle?()
-            }
-            _ = navigationController.popViewController(animated: animated)
-            CATransaction.commit()
-        } else {
-            self.dismiss(animated: animated, completion: {
-                handle?()
-            })
-        }
+        self.dismiss(animated: animated, completion: {
+            handle?()
+        })
     }
     
     func po(setup: String) {

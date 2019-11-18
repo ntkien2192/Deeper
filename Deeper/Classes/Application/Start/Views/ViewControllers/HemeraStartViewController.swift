@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class HemeraStartViewController: ViewController {
     
     @IBOutlet weak var imageView: ImageView!
-    @IBOutlet weak var labelCopyrightInfo: UILabel!
+    @IBOutlet weak var labelCopyrightInfo: Label!
     
     let viewModel = StartStore.share.viewModel.value
     
@@ -40,11 +42,10 @@ class HemeraStartViewController: ViewController {
         }
         
         _ = wake().on(completed: { [weak self] in
-            self?.imageView.dismissAnimation({
-                self?.imageView.dismiss(delay: 0.1, handle: {
-                    print("   │    │    │    └ [CONTROLLER  CALL] ··· [Close] -> [\(self?.detail ?? "")]")
-                    self?.viewModel.activity.accept(.callClose)
-                })
+            self?.imageView.dismiss(delay: 1)
+            self?.labelCopyrightInfo.dismiss(delay: 1.3, handle: {
+                print("   │    │    │    └ [CONTROLLER  CALL] ··· [Close] -> [\(self?.detail ?? "")]")
+                self?.viewModel.activity.accept(.callClose)
             })
         })
     }

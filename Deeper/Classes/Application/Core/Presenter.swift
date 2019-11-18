@@ -29,19 +29,6 @@ class Presenter: NSObject {
                 case .onNavigation:
                     screen.navigation.value?.presenterPresent(animated: screen.animation.value, handle: handle)
                     return
-                    
-                    
-                    
-//                case .rawViewController:
-//                    if let view = screen.viewController.value {
-//                        view.present(handle: handle)
-//                        return
-//                    }
-//                case .view:
-//                    if let view = screen.view.value {
-//                        view.present(handle: handle)
-//                        return
-//                    }
                 default: break
                 }
                 application.state.accept(.close)

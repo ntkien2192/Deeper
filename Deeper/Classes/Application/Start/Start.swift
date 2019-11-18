@@ -12,30 +12,38 @@ import RxSwift
 
 public class Start: Application {
     
-    public let store = StartStore.share
+    let store = StartStore.share
+    let viewModel = StartStore.share.viewModel.value
     
-    public class func on() -> Start? {
+    public class func on() -> Start {
         let app = Start()
         return app
     }
     
-    public func bind(_ handle: ((StartStore) -> Void)? = nil) -> Start {
-        handle?(store)
+    public func config(_ handle: ((ApplicationConfig) -> Void)? = nil) -> Start {
+        handle?(StartStore.share.config.value)
+        return self
+    }
+    
+    public func bind(_ handle: ((StartViewModel) -> Void)? = nil) -> Start {
+        handle?(StartStore.share.viewModel.value)
+        return self
+    }
+    
+    public func activity(_ handle: ((StartActivity) -> Void)? = nil) -> Start {
+        _ = StartStore.share.viewModel.value.activity.on { activity in
+            handle?(activity)
+        }
         return self
     }
     
     override init() {
         super.init()
-        let theme = Deeper.share.theme
+        let theme = Deeper.share.config.value.theme.value
         
         switch theme {
         case .hemera:
             let view = Storyboard.start.get(HemeraStartViewController.self)!
-            _ = view.viewModel.activity.on { [weak self] activity in
-                if activity == .callClose {
-                    self?.state.accept(.close)
-                }
-            }
             let screen = Screen(.onNavigation(view, hideNavigationBar: true))
             _ = store.config.value.animation.to(screen.animation)
             prepare(screen)
@@ -44,7 +52,12 @@ public class Start: Application {
             let screen = Screen(.onNavigation(view, hideNavigationBar: true))
             _ = store.config.value.animation.to(screen.animation)
             prepare(screen)
+        default: break
         }
+        
+        _ = viewModel.activity.on({ activity in
+            if activity == .callClose { self.state.accept(.close) }
+        })
     }
     
     override func clearStore() {

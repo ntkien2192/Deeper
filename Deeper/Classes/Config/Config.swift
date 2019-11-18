@@ -8,10 +8,10 @@
 
 import UIKit
 
-//let size = UIApplication.size
-//let width = UIApplication.size.width
-//let height = UIApplication.size.height
-//
+let size = UIApplication.size
+let width = UIApplication.size.width
+let height = UIApplication.size.height
+
 //let fontBold = "Noto Sans JP Bold"
 //let fontRegular = "Noto Sans JP Regular"
 
@@ -31,4 +31,7 @@ public typealias Handle = (() -> Void)?
 //typealias BoolHandle = ((Bool) -> Void)?
 public typealias BusinessQueueHandle = ((BusinessQueue) -> Void)?
 public typealias DeeperHandle = ((Deeper) -> Void)?
+public typealias StoreHandle = ((Store) -> Void)?
+public typealias DeeperConfigHandle = ((DeeperConfig) -> Void)?
+
 

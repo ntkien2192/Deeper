@@ -1,6 +1,6 @@
 {
   "name": "Deeper",
-  "version": "0.3.3",
+  "version": "0.3.6",
   "summary": "The perfect interface framework for your software",
   "description": "TODO: We try to create a interface framework that can meet the needs of a programmer from welcome, sign-up to more complex functions such as details, master pages.",
   "homepage": "https://github.com/ntkien2192/Deeper",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/ntkien2192/Deeper.git",
-    "tag": "0.3.3"
+    "tag": "0.3.6"
   },
   "platforms": {
     "ios": "11.4"

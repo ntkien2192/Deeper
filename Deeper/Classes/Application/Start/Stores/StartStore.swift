@@ -22,6 +22,12 @@ public class StartStore: Store {
         return value
     }
     
-    public let config = BehaviorRelay<StartConfig>(value: StartConfig())
+    public let config = BehaviorRelay<ApplicationConfig>(value: ApplicationConfig())
     public let viewModel = BehaviorRelay<StartViewModel>(value: StartViewModel())
+    
+    public override init() {
+        super.init()
+        config.value.animation.accept(false)
+    }
+    
 }

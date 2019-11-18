@@ -40,6 +40,8 @@ public extension UIColor {
             /// Color Code: B18935
             static var ellowShadow: UIColor { return #colorLiteral(red: 0.7235149741, green: 0.5293557048, blue: 0.1048305705, alpha: 1) }
             /// Color Code: 5C78FF
+            static var lightBlue: UIColor { return #colorLiteral(red: 0.9019607843, green: 0.9176470588, blue: 0.968627451, alpha: 1) }
+            /// Color Code: 5C78FF
             static var blue: UIColor { return #colorLiteral(red: 0.3607843137, green: 0.4705882353, blue: 1, alpha: 1) }
             /// Color Code: 3E49A2
             static var blueShadow: UIColor { return #colorLiteral(red: 0.2431372549, green: 0.2862745098, blue: 0.6352941176, alpha: 1) }

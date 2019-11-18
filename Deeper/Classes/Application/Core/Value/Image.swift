@@ -26,9 +26,10 @@ public class Image: Value {
 public extension Image {
     enum assest: String {
         case logo = "Logo"
+        case welcomeBackground = "WelcomeBackground"
         
         public var value: UIImage? {
-            let theme = Deeper.share.theme
+            let theme = Deeper.share.config.value.theme.value
             let podBundle = Bundle(for: Deeper.self)
             guard let bundleURL = podBundle.url(forResource: "Deeper", withExtension: "bundle"), let bundle = Bundle(url: bundleURL) else {
                 return nil

@@ -10,5 +10,9 @@ import RxSwift
 import RxCocoa
 
 public class ApplicationConfig: NSObject {
-    public let animation = BehaviorRelay<Bool>(value: true)
+    let animation = BehaviorRelay<Bool>(value: true)
+    
+    public func set(animation: Bool) {
+        self.animation.accept(animation)
+    }
 }

@@ -15,7 +15,7 @@ enum AppType {
     case subFunction
 }
 
-enum AppState {
+public enum AppState {
     case none
     case prepare
     case ready
@@ -47,9 +47,9 @@ public class Application: NSObject {
     let subApplication = BehaviorRelay<[Application]>(value: [])
     
     var state: BehaviorRelay<AppState> {
-        let temp = _applicationStateData[id.value] ?? BehaviorRelay<AppState>(value: .none)
-        if _applicationStateData[id.value] == nil {
-            _applicationStateData[id.value] = temp
+        let temp = _applicationStateData[self.address] ?? BehaviorRelay<AppState>(value: .none)
+        if _applicationStateData[self.address] == nil {
+            _applicationStateData[self.address] = temp
         }
         return temp
     }
@@ -66,7 +66,7 @@ public class Application: NSObject {
     }
     
     func run() {
-        _ = Deeper.open(self)
+        _ = Deeper.share.open(self)
     }
     
     func wake() -> Observable<Any?> {

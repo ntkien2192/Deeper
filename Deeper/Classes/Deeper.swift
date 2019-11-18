@@ -12,13 +12,17 @@ import RxCocoa
 public class Deeper: NSObject {
     static let share: Deeper = { return Deeper() }()
     
-    let store = Store()
-    var theme = Theme.hemera
-    let statusBarStyle = BehaviorRelay<Any?>(value: nil)
+    let store = BehaviorRelay<Store>(value: Store())
+    let config = BehaviorRelay<DeeperConfig>(value: DeeperConfig())
     let queues = BehaviorRelay<[BusinessQueue]>(value: [])
     
+    let statusBarStyle = BehaviorRelay<Any?>(value: nil)
+
     override init() {
         super.init()
+        print("[DEEPER  PREPARE] ┐")
+        print("   ┌──────────────┘")
+        print("   └ [THEME   PREPARE] ┐")
         print("   ┌───────────────────┘")
         print("   └ [APPPUSH PREPARE] ┐·················· [\(self.detail)]")
         print("   ┌───────────────────┘")
@@ -26,75 +30,39 @@ public class Deeper: NSObject {
         print("   │    ┬    ┬    ┌────┘")
     }
     
-    public class func setup(_ theme: Theme = .hemera) {
-        print("   ┌──────────────┘")
-        print("   └ [THEME   PREPARE] ┐·················· [\(theme.rawValue)]")
-        Deeper.share.theme = theme
-        theme.setup()
+    public class func on(_ window: UIWindow?, _ preparedHandle: DeeperHandle) {
+        
+        let deeper = Deeper.share
+        
+        guard let window = window, let rootView = window.rootViewController else { return }
+        Window.share = window
+        
+        _ = rootView.waked().on(completed: {
+            
+            _ = deeper.config.value.theme.on { theme in
+                theme.setup()
+                rootView.view.backgroundColor = theme.backgroundColor
+            }
+            
+            print("   └──────────────┘\n")
+            print("[DEEPER    START] ┐")
+            print("   ┌──────────────┘")
+            print("   └ [APPPUSH PREPARE] ┐·················· [\(Deeper.share.detail)]")
+            print("   │    ┌──────────────┘")
+            preparedHandle?(deeper)
+        })
     }
     
-    public class func on(_ window: UIWindow?, theme: Theme = .hemera, handle: Handle) {
-        print("[DEEPER  PREPARE] ┐")
-        Deeper.setup(theme)
-        
-        if let window = window {
-            Window.share = window
-            
-            if let view = window.rootViewController {
-                view.view.backgroundColor = theme.backgroundColor
-                _ = view.waked().on(completed: {
-                    print("   └──────────────┘\n")
-                    print("[DEEPER    START] ┐")
-                    print("   ┌──────────────┘")
-                    print("   └ [APPPUSH PREPARE] ┐·················· [\(Deeper.share.detail)]")
-                    print("   │    ┌──────────────┘")
-                    handle?()
-                })
-            }
-        }
+    public func bind(_ handle: StoreHandle = nil) -> Deeper {
+        handle?(self.store.value)
+        return self
+    }
+    
+    public func config(_ handle: DeeperConfigHandle = nil) -> Deeper {
+        handle?(self.config.value)
+        return self
     }
 
-    public class func open(_ application: Application?) -> BusinessQueue {
-        if let application = application {
-            let appPush = Deeper.share
-            if let queue = appPush.queues.value.included(application) {
-                queue.state.accept(.active)
-                return queue
-            } else {
-                let newQueue = BusinessQueue()
-                _ = newQueue.state.on(type: .multiASync, { state in
-                    if state == .none {
-                        print("   │    └ [QUEUE \(state.detail)] ┐··············· [\(newQueue.detail)]")
-                        print("   │    │    ┌────────────┘")
-                    } else {
-                        print("   │    └ [QUEUE \(state.detail)] ················ [\(newQueue.detail)]")
-                    }
-                    
-                    switch state {
-                    case .prepare:
-                        appPush.queues.accept(appPush.queues.value.add(newQueue))
-                        newQueue.state.accept(.ready)
-                    case .ready:
-                        newQueue.state.accept(.active)
-                    case .active:
-                        appPush.queues.accept(appPush.queues.value.sendToTop(newQueue))
-                        appPush.run()
-                    case .close:
-                        appPush.queues.accept(appPush.queues.value.remove(newQueue))
-                        if !newQueue.isSubQueue.value {
-                            appPush.run()
-                        }
-                    default: break
-                    }
-                })
-                return newQueue.then(application, handle: {
-                    newQueue.state.accept(.prepare)
-                })
-            }
-        }
-        
-        return BusinessQueue()
-    }
     
     func run() {
         if let queue = queues.value.first {
@@ -103,6 +71,52 @@ public class Deeper: NSObject {
         } else {
             print("   └ [APPPUSH   CLOSE] ··················· [\(self.detail)]")
         }
+    }
+    
+    public func open(_ application: Application?) -> BusinessQueue {
+        if let application = application {
+            if let queue = queues.value.included(application) {
+                queue.state.accept(.active)
+                return queue
+            } else {
+                let newQueue = BusinessQueue()
+                _ = newQueue.state.on(type: .multiASync, { [weak self] state in
+                    if state == .none {
+                        print("   │    └ [QUEUE \(state.detail)] ┐··············· [\(newQueue.detail)]")
+                        print("   │    │    ┌────────────┘")
+                    } else {
+                        print("   │    └ [QUEUE \(state.detail)] ················ [\(newQueue.detail)]")
+                    }
+                    
+                    if let self = self {
+                        switch state {
+                        case .prepare:
+                            self.queues.accept(self.queues.value.add(newQueue))
+                            newQueue.state.accept(.ready)
+                        case .ready:
+                            newQueue.state.accept(.active)
+                        case .active:
+                            self.queues.accept(self.queues.value.sendToTop(newQueue))
+                            self.run()
+                        case .close:
+                            self.queues.accept(self.queues.value.remove(newQueue))
+                            if !newQueue.isSubQueue.value {
+                                self.run()
+                            }
+                        default: break
+                        }
+                    }
+                })
+                
+                store.accept(<#T##event: Store##Store#>)
+                
+                return newQueue.open(application, handle: {
+                    newQueue.state.accept(.prepare)
+                })
+            }
+        }
+        
+        return BusinessQueue()
     }
 }
 
