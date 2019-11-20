@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,47 +13,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Erebus Start View Controller-->
-        <scene sceneID="yW2-WC-cB7">
-            <objects>
-                <viewController storyboardIdentifier="ErebusStartViewController" id="gS9-vY-yFl" customClass="ErebusStartViewController" customModule="Deeper" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Wv8-cd-H45">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t7f-ag-8l0" customClass="ImageView" customModule="Deeper" customModuleProvider="target">
-                                <rect key="frame" x="162" y="408" width="90" height="90"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="250" constant="90" id="qcz-bp-25A"/>
-                                    <constraint firstAttribute="width" priority="250" constant="90" id="wRO-Pk-FTs"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="animation" value="fadeIn"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="delay">
-                                        <real key="value" value="0.10000000000000001"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="t7f-ag-8l0" firstAttribute="centerY" secondItem="XIl-GI-bay" secondAttribute="centerY" id="7kb-Hp-801"/>
-                            <constraint firstItem="t7f-ag-8l0" firstAttribute="centerX" secondItem="XIl-GI-bay" secondAttribute="centerX" id="kPB-i3-Rp5"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="XIl-GI-bay"/>
-                    </view>
-                    <connections>
-                        <outlet property="imageView" destination="t7f-ag-8l0" id="PET-Ac-BQ4"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u9k-4E-Iy8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="670" y="179"/>
-        </scene>
-        <!--Hemera Start View Controller-->
+        <!--Start View Controller-->
         <scene sceneID="9B9-nI-07Z">
             <objects>
-                <viewController storyboardIdentifier="HemeraStartViewController" id="Kpo-Rb-ski" customClass="HemeraStartViewController" customModule="Deeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartViewController" id="Kpo-Rb-ski" customClass="StartViewController" customModule="Deeper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aij-75-Cfd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,12 +27,6 @@
                                     <constraint firstAttribute="height" constant="90" identifier="height" id="BKq-kF-BBJ"/>
                                     <constraint firstAttribute="width" constant="90" identifier="width" id="RsU-rb-vBb"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="animation" value="fadeIn"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="delay">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Power of Whale land" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CzI-s6-ZQ5" customClass="Label" customModule="Deeper" customModuleProvider="target">
                                 <rect key="frame" x="140.5" y="831" width="133.5" height="21"/>

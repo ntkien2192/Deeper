@@ -27,20 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             let start = Start.on()
-//                .config({ config in
-//                    config.set(animation: true)
-//                }).bind({ viewModel in
-//                    let image = Image(Image.assest.logo.value)
-//                    let copyrightInfo = Content("Power of Whale land", targets: ["Whale land"], displayType: .info)
-//                    viewModel.set(image: image)
-//                    viewModel.set(copyrightInfo: copyrightInfo)
-//                })
-            
-            let welcome = Welcome.on()
+                .config({ config in
+//                    config.set(presentAnimation: true)
+                }).bind({ viewModel in
+                    let image = Image(Image.assest.logo.value)
+                    let copyrightInfo = Content("Power of Whale land", targets: ["Whale land"], displayType: .info)
+                    viewModel.set(image: image)
+                    viewModel.set(copyrightInfo: copyrightInfo)
+                })
             
             _ = deeper
                 .open(start)
-                .open(welcome)
         }
         
         return true

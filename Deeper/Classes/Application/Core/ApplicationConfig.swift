@@ -10,9 +10,14 @@ import RxSwift
 import RxCocoa
 
 public class ApplicationConfig: NSObject {
-    let animation = BehaviorRelay<Bool>(value: true)
+    let presentAnimation = BehaviorRelay<Bool>(value: true)
+    let screen = BehaviorRelay<ApplicationScreen>(value: ApplicationScreen())
     
-    public func set(animation: Bool) {
-        self.animation.accept(animation)
+    public func set(presentAnimation: Bool) {
+        self.screen.value.presentAnimation.accept(presentAnimation)
+    }
+    
+    public func set(screen: ApplicationScreen) {
+        self.screen.accept(screen)
     }
 }

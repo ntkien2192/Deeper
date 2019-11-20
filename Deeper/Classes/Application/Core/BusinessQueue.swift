@@ -86,7 +86,7 @@ public class BusinessQueue: NSObject {
                         application.state.accept(.background)
                         handle?()
                     case .active:
-                        Presenter.open(application)
+                        application.config.value.screen.value.open()
                     case .closeThen(let app):
                         _ = self?.open(app, handle: {
                             application.state.accept(.close)
@@ -97,12 +97,13 @@ public class BusinessQueue: NSObject {
                                 application.state.accept(.close)
                             }
                         }
-                        
-                        Presenter.close(application, handle: {
-                            self?.applications.accept(self?.applications.value.remove(application) ?? [])
-                            application.clearStore()
-                            self?.run()
-                        })
+                        application.config.value.screen.value.close {
+                            application.state.accept(.clear)
+                        }
+                    case .clear:
+                        application.clearStore()
+                        self?.applications.accept(self?.applications.value.remove(application) ?? [])
+                        self?.run()
                     default: break
                     }
                 })
@@ -118,38 +119,14 @@ public class BusinessQueue: NSObject {
             print("   │    └ [QUEUE   START] ┐··············· [\(self.detail)]")
             print("   │    │    ┌────────────┘")
             application.state.accept(.active)
-            _ = application.wake().on(completed: {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    if let subApplication = application.subApplication.value.first {
-                        subApplication.run()
-                    }
+            _ = application.waked().on(completed: {
+                if let subApplication = application.subApplication.value.first {
+                    subApplication.run()
                 }
             })
         } else {
             print("   │    └ [QUEUE   EMPTY] ················ [\(self.detail)]")
             state.accept(.close)
         }
-    }
-}
-
-extension Array where Element: Application {
-    func add(_ application: Application) -> [Application] {
-        return self + [application]
-    }
-    
-    func included(_ application: Application) -> Application? {
-        return first(where: { $0.id.value == application.id.value })
-    }
-    
-    func indexOf(_ application: Application) -> Int? {
-        return firstIndex(where: { $0.id.value == application.id.value })
-    }
-    
-    func remove(_ application: Application) -> [Application] {
-        var temp = self
-        if let index = indexOf(application) {
-            temp.remove(at: index)
-        }
-        return temp
     }
 }

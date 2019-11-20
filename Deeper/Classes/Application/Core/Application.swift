@@ -23,6 +23,7 @@ public enum AppState {
     case active
     case close
     case closeThen(Application?)
+    case clear
     
     var detail: String {
         switch self {
@@ -33,6 +34,7 @@ public enum AppState {
         case .active:       return "    ACTIVE"
         case .close:        return "     CLOSE"
         case .closeThen:    return "CLOSE THEN"
+        case .clear:        return "     CLEAR"
         }
     }
 }
@@ -41,10 +43,9 @@ var _applicationStateData = [String: BehaviorRelay<AppState>]()
 
 public class Application: NSObject {
     
-    let id = BehaviorRelay<String>(value: UUID().uuidString)
     let type = BehaviorRelay<AppType>(value: .application)
-    let screen = BehaviorRelay<Screen?>(value: nil)
     let subApplication = BehaviorRelay<[Application]>(value: [])
+    let config = BehaviorRelay<ApplicationConfig>(value: ApplicationConfig())
     
     var state: BehaviorRelay<AppState> {
         let temp = _applicationStateData[self.address] ?? BehaviorRelay<AppState>(value: .none)
@@ -61,27 +62,17 @@ public class Application: NSObject {
         return self
     }
     
-    func prepare(_ screen: Screen) {
-        self.screen.accept(screen)
-    }
-    
     func run() {
         _ = Deeper.share.open(self)
     }
     
-    func wake() -> Observable<Any?> {
+    func waked() -> Observable<Any?> {
         return Observable.create({ [weak self] observer -> Disposable in
-            switch self?.screen.value?.type.value ?? .none {
-            case .onNavigation(let view, _):
-                _ = view.waked().on(completed: {
+            _ = self?.config.value.screen.value.state({ state in
+                if state == .open {
                     observer.onCompleted()
-                })
-//            case .view(let view):
-//                _ = view.wake().on(completed: {
-//                    observer.onCompleted()
-//                })
-            default: break
-            }
+                }
+            })
             return Disposables.create()
         })
     }
@@ -91,26 +82,24 @@ public class Application: NSObject {
     }
 }
 
-extension Array where Element: Screen {
-    
-    func add(_ screen: Screen) -> [Screen] {
-        return self + [screen]
+extension Array where Element: Application {
+    func add(_ application: Application) -> [Application] {
+        return self + [application]
     }
     
-    func included(_ screen: Screen) -> Screen? {
-        return first(where: { $0.id.value == screen.id.value })
+    func included(_ application: Application) -> Application? {
+        return first(where: { $0.address == application.address })
     }
     
-    func indexOf(_ screen: Screen) -> Int? {
-        return firstIndex(where: { $0.id.value == screen.id.value })
+    func indexOf(_ application: Application) -> Int? {
+        return firstIndex(where: { $0.address == application.address })
     }
     
-    func remove(_ screen: Screen) -> [Screen] {
+    func remove(_ application: Application) -> [Application] {
         var temp = self
-        if let index = indexOf(screen) {
+        if let index = indexOf(application) {
             temp.remove(at: index)
         }
         return temp
     }
 }
-

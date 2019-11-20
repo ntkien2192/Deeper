@@ -38,7 +38,6 @@ public class Deeper: NSObject {
         Window.share = window
         
         _ = rootView.waked().on(completed: {
-            
             _ = deeper.config.value.theme.on { theme in
                 theme.setup()
                 rootView.view.backgroundColor = theme.backgroundColor
@@ -63,7 +62,6 @@ public class Deeper: NSObject {
         return self
     }
 
-    
     func run() {
         if let queue = queues.value.first {
             print("   └ [APPPUSH   START] ··················· [\(self.detail)]")
@@ -100,15 +98,11 @@ public class Deeper: NSObject {
                             self.run()
                         case .close:
                             self.queues.accept(self.queues.value.remove(newQueue))
-                            if !newQueue.isSubQueue.value {
-                                self.run()
-                            }
+                            self.run()
                         default: break
                         }
                     }
                 })
-                
-                store.accept(<#T##event: Store##Store#>)
                 
                 return newQueue.open(application, handle: {
                     newQueue.state.accept(.prepare)
@@ -121,8 +115,8 @@ public class Deeper: NSObject {
 }
 
 extension Array where Element: BusinessQueue {
-    func included(_ app: Application) -> BusinessQueue? {
-        return first(where: { $0.applications.value.first(where: { $0.id.value == app.id.value }) != nil })
+    func included(_ application: Application) -> BusinessQueue? {
+        return first(where: { $0.applications.value.first(where: { $0.address == application.address }) != nil })
     }
     
     func add(_ appQueue: BusinessQueue) -> [BusinessQueue] {

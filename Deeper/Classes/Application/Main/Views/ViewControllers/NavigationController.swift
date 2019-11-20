@@ -34,7 +34,7 @@ class NavigationController: UINavigationController {
 }
 
 extension UIViewController {
-    func onNavigation(_ hideNavigationBar: Bool = false) -> NavigationController {
+    func onNavigation(hideNavigationBar: Bool = false) -> NavigationController {
         let view = NavigationController(rootViewController: self)
         view.isNavigationBarHidden = hideNavigationBar
         return view

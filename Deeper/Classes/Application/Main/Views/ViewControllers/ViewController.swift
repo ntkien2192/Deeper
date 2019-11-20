@@ -26,6 +26,8 @@ public enum StatusBarStyle {
 }
 
 public class ViewController: UIViewController {
+    @IBInspectable var hideNavigationBar: Bool = false
+    
     public var statusBarStyle = BehaviorRelay<StatusBarStyle>(value: .dark)
     public override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation { return .fade }
     public override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -63,19 +65,13 @@ var _viewControllerStateData = [String: BehaviorRelay<ViewControllerState>]()
 var _viewControllerWakeData = [String: Bool]()
 
 extension UIViewController: WindowPresentation {
-    
-    var stateStore: BehaviorRelay<ViewControllerState>? {
-        get { return _viewControllerStateData[self.address] }
-        set(newValue) { _viewControllerStateData[self.address] = newValue }
-    }
-
     var isWaked: Bool {
         get { return _viewControllerWakeData[self.address] ?? false }
         set(newValue) { _viewControllerWakeData[self.address] = newValue }
     }
     
     var state: BehaviorRelay<ViewControllerState> {
-        if let stateStore = stateStore {
+        if let stateStore = _viewControllerStateData[self.address] {
             return stateStore
         }
         let temp = BehaviorRelay<ViewControllerState>(value: .none)
@@ -86,7 +82,6 @@ extension UIViewController: WindowPresentation {
             temp.accept(.viewDidLoad)
         })
         _ = self.rx.sentMessage(#selector(viewWillAppear(_:))).on({ [weak self] _ in
-            print("   │    │    │    └ [CONTROLLER  SHOW] ··· [\(self?.detail ?? "")]")
             temp.accept(.viewWillAppear)
         })
         _ = self.rx.sentMessage(#selector(viewDidAppear(_:))).on({ [weak self] _ in
@@ -99,24 +94,12 @@ extension UIViewController: WindowPresentation {
         _ = self.rx.sentMessage(#selector(viewWillDisappear(_:))).on({  _ in
             temp.accept(.viewWillDisappear)
         })
-        _ = self.rx.sentMessage(#selector(viewDidDisappear(_:))).on({ [weak self] _ in
-            print("   │    │    │    └ [CONTROLLER ENDED] ··· [\(self?.detail ?? "")]")
+        _ = self.rx.sentMessage(#selector(viewDidDisappear(_:))).on({ _ in
             temp.accept(.viewDidDisappear)
         })
         
-        stateStore = temp
+        _viewControllerStateData[self.address] = temp
         return temp
-    }
-    
-    func wake() -> Observable<Any?> {
-        return Observable.create({ [weak self] observer -> Disposable in
-            _ = self?.state.on({ state in
-                if state == .viewDidLoad {
-                    observer.onCompleted()
-                }
-            })
-            return Disposables.create()
-        })
     }
     
     func waked() -> Observable<Any?> {
@@ -129,19 +112,6 @@ extension UIViewController: WindowPresentation {
             return Disposables.create()
         })
     }
-
-    func closed() -> Observable<Any?> {
-        return Observable.create({ [weak self] observer -> Disposable in
-            _ = self?.state.on({ state in
-                if state == .viewDidDisappear {
-                    observer.onCompleted()
-                }
-            })
-            return Disposables.create()
-        })
-    }
-    
-
     
     func calculateStatusBarAreaAvgLuminance(_ completion: @escaping (CGFloat) -> Void) {
         let scale: CGFloat = 0.5

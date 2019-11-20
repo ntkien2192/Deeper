@@ -12,8 +12,8 @@ import RxSwift
 
 public class Start: Application {
     
-    let store = StartStore.share
-    let viewModel = StartStore.share.viewModel.value
+    private let store = StartStore.share
+    private let viewModel = StartStore.share.viewModel.value
     
     public class func on() -> Start {
         let app = Start()
@@ -21,17 +21,17 @@ public class Start: Application {
     }
     
     public func config(_ handle: ((ApplicationConfig) -> Void)? = nil) -> Start {
-        handle?(StartStore.share.config.value)
+        handle?(self.config.value)
         return self
     }
     
     public func bind(_ handle: ((StartViewModel) -> Void)? = nil) -> Start {
-        handle?(StartStore.share.viewModel.value)
+        handle?(viewModel)
         return self
     }
     
     public func activity(_ handle: ((StartActivity) -> Void)? = nil) -> Start {
-        _ = StartStore.share.viewModel.value.activity.on { activity in
+        _ = viewModel.activity.on { activity in
             handle?(activity)
         }
         return self
@@ -39,25 +39,18 @@ public class Start: Application {
     
     override init() {
         super.init()
-        let theme = Deeper.share.config.value.theme.value
         
-        switch theme {
-        case .hemera:
-            let view = Storyboard.start.get(HemeraStartViewController.self)!
-            let screen = Screen(.onNavigation(view, hideNavigationBar: true))
-            _ = store.config.value.animation.to(screen.animation)
-            prepare(screen)
-        case .erebus:
-            let view = Storyboard.start.get(ErebusStartViewController.self)!
-            let screen = Screen(.onNavigation(view, hideNavigationBar: true))
-            _ = store.config.value.animation.to(screen.animation)
-            prepare(screen)
-        default: break
+        let view = DeeperKit.start.onNavigation(hideNavigationBar: true)
+        
+        _ = config { config in
+            let screen = ApplicationScreen(view)
+            config.set(screen: screen)
+            config.set(presentAnimation: false)
         }
         
-        _ = viewModel.activity.on({ activity in
+        _ = activity { activity in
             if activity == .callClose { self.state.accept(.close) }
-        })
+        }
     }
     
     override func clearStore() {

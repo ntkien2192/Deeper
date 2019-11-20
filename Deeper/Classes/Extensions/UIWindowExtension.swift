@@ -1,12 +1,12 @@
 //
-//  Window.swift
+//  UIWindowExtension.swift
 //  Deeper
 //
-//  Created by Nguyễn Trung Kiên on 10/13/19.
-//  Copyright © 2019 Nguyễn Trung Kiên. All rights reserved.
+//  Created by Nguyễn Trung Kiên on 11/20/19.
 //
 
 import UIKit
+
 
 typealias WindowPriority = Float
 
@@ -49,8 +49,8 @@ protocol WindowStack {
 }
 
 protocol WindowPresentation: class, WindowStack {
-    func presenterPresent(animated: Bool, handle: Handle)
-    func presenterDismiss(animated: Bool, handle: Handle)
+    func present(animated: Bool, handle: Handle)
+    func dismiss(animated: Bool, handle: Handle)
 }
 
 extension WindowPresentation {
@@ -66,29 +66,7 @@ extension WindowPresentation {
 }
 
 extension WindowPresentation where Self: UIViewController {
-    
-    func sReplace<T: UIViewController>(with controller: T, animated: Bool = false, completion: (() -> Void)? = nil) {
-        DispatchQueue.main.async {
-            if animated {
-                Window.share.isHidden = false
-                UIView.animate(withDuration: 0.3, animations: {
-                    Window.share.rootViewController = controller
-                    Window.share.alpha = 1
-                }, completion: { completed in
-                    Window.share.makeKey()
-                    completion?()
-                })
-            } else {
-                Window.share.rootViewController = controller
-                Window.share.alpha = 1
-                Window.share.isHidden = false
-                Window.share.makeKey()
-                completion?()
-            }
-        }
-    }
-    
-    func presenterPresent(animated: Bool = true, handle: Handle = nil) {
+    func present(animated: Bool = true, handle: Handle = nil) {
         func presentController() {
             guard let currentPresented = UIViewController.topController(Window.share.rootViewController) else {
                 completedProcedure()
@@ -97,7 +75,7 @@ extension WindowPresentation where Self: UIViewController {
             
             Window.stack.append(self)
             if currentPresented.canDismiss == true {
-                currentPresented.presenterDismiss(animated: animated, handle: handle)
+                currentPresented.dismiss(animated: animated, handle: handle)
             } else {
                 self.modalPresentationStyle = .fullScreen
                 currentPresented.present(self, animated: animated) { handle?() }
@@ -105,7 +83,7 @@ extension WindowPresentation where Self: UIViewController {
         }
         
         func completedProcedure() {
-            Window.share.makeKey() 
+            Window.share.makeKey()
             Window.share.alpha = 1
             Window.share.isHidden = false
 
@@ -131,7 +109,7 @@ extension WindowPresentation where Self: UIViewController {
         queue.run()
     }
     
-    func presenterDismiss(animated: Bool = false, handle: Handle = nil) {
+    func dismiss(animated: Bool = false, handle: Handle = nil) {
         func dismissController() {
             if let navigationController = self.navigationController {
                 CATransaction.begin()
@@ -173,7 +151,7 @@ extension WindowPresentation where Self: UIViewController {
         func completedProcedure() {
             if let controller = Window.stack.sorted(by: {$0.priority > $1.priority}).first {
                 Window.stack = Window.stack.filter({ $0 !== controller })
-                controller.presenterPresent(animated: animated, handle: handle)
+                controller.present(animated: animated, handle: handle)
             } else {
                 handle?()
             }
@@ -188,7 +166,7 @@ extension WindowPresentation where Self: UIViewController {
 }
 
 extension WindowPresentation where Self: UIView {
-    func presenterPresent(animated: Bool = true, handle: Handle = nil) {
+    func present(animated: Bool = true, handle: Handle = nil) {
         let queue = TaskQueue()
         queue.tasks +=! { [weak self] in
             if let self = self {
@@ -206,7 +184,7 @@ extension WindowPresentation where Self: UIView {
 
     }
     
-    func presenterDismiss(animated: Bool = false, handle: Handle = nil) {
+    func dismiss(animated: Bool = false, handle: Handle = nil) {
         let queue = TaskQueue()
         queue.tasks +=! { [weak self] in
             if let self = self {

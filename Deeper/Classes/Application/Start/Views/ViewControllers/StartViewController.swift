@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class HemeraStartViewController: ViewController {
+class StartViewController: ViewController {
     
     @IBOutlet weak var imageView: ImageView!
     @IBOutlet weak var labelCopyrightInfo: Label!
@@ -20,11 +20,12 @@ class HemeraStartViewController: ViewController {
         super.viewDidLoad()
         _ = viewModel.image.on({ [weak self] image in
             if let image = image {
-                self?.po(setup: image.detail)
                 if let imageUrl = image.imageUrl.value {
+                    self?.po(setup: imageUrl.detail)
                     self?.imageView.set(imageUrl)
                 }
                 if let image = image.image.value {
+                    self?.po(setup: image.detail)
                     self?.imageView.set(placeholder: image)
                 }
                 if let size = image.size.value {
@@ -41,7 +42,7 @@ class HemeraStartViewController: ViewController {
             }
         }
         
-        _ = wake().on(completed: { [weak self] in
+        _ = waked().on(completed: { [weak self] in
             self?.imageView.dismiss(delay: 1)
             self?.labelCopyrightInfo.dismiss(delay: 1.3, handle: {
                 print("   │    │    │    └ [CONTROLLER  CALL] ··· [Close] -> [\(self?.detail ?? "")]")
