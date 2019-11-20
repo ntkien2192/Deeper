@@ -78,7 +78,6 @@ extension UIViewController: WindowPresentation {
         
         _ = self.rx.sentMessage(#selector(viewDidLoad)).on({ [weak self] _ in
             print("   │    │    │    └ [CONTROLLER START] ··· [\(self?.detail ?? "")]")
-            
             temp.accept(.viewDidLoad)
         })
         _ = self.rx.sentMessage(#selector(viewWillAppear(_:))).on({ _ in
