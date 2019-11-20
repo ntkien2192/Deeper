@@ -81,7 +81,7 @@ extension UIViewController: WindowPresentation {
             
             temp.accept(.viewDidLoad)
         })
-        _ = self.rx.sentMessage(#selector(viewWillAppear(_:))).on({ [weak self] _ in
+        _ = self.rx.sentMessage(#selector(viewWillAppear(_:))).on({ _ in
             temp.accept(.viewWillAppear)
         })
         _ = self.rx.sentMessage(#selector(viewDidAppear(_:))).on({ [weak self] _ in

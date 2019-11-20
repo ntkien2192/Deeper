@@ -3658,6 +3658,9 @@
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1120;
 				TargetAttributes = {
+					DC4552372C5570ED0DE042A9A1F1BFB7 = {
+						DevelopmentTeam = QMPAK7CSJF;
+					};
 					EADCBC60AA2DA28D1E337E845D2A6805 = {
 						DevelopmentTeam = QMPAK7CSJF;
 					};
@@ -4870,12 +4873,13 @@
 			baseConfigurationReference = 02776CE83CD0DDEF33D271F1054419FA /* Deeper.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QMPAK7CSJF;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -5098,12 +5102,13 @@
 			baseConfigurationReference = 02776CE83CD0DDEF33D271F1054419FA /* Deeper.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QMPAK7CSJF;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
