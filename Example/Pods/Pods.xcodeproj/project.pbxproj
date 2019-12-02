@@ -3464,7 +3464,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
+<<<<<<< HEAD
 				LastUpgradeCheck = 1100;
+=======
+				LastUpgradeCheck = 1120;
+				TargetAttributes = {
+					DC4552372C5570ED0DE042A9A1F1BFB7 = {
+						DevelopmentTeam = QMPAK7CSJF;
+					};
+					EADCBC60AA2DA28D1E337E845D2A6805 = {
+						DevelopmentTeam = QMPAK7CSJF;
+					};
+				};
+>>>>>>> 02802e1b23e39152a5a569cdf448cec1be4951f0
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -4789,13 +4801,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C5D57DE91F05429EE3B617752D8C4C13 /* RealmSwift.xcconfig */;
 			buildSettings = {
+<<<<<<< HEAD
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
+=======
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
+>>>>>>> 02802e1b23e39152a5a569cdf448cec1be4951f0
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QMPAK7CSJF;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -4936,13 +4954,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EB031072E91333379911FB7A7A568948 /* Realm.xcconfig */;
 			buildSettings = {
+<<<<<<< HEAD
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
+=======
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
+>>>>>>> 02802e1b23e39152a5a569cdf448cec1be4951f0
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QMPAK7CSJF;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
