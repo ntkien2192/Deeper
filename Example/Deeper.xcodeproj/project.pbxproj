@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		403B3C040C91E2E4411502AD /* Pods_Deeper_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB07E13D0D8F281ECA363BF /* Pods_Deeper_Tests.framework */; };
+		403B3C040C91E2E4411502AD /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		40ADD212BAE6FA89F3E85020 /* Pods_Deeper_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCAAE63CD3F0A00910CC3518 /* Pods_Deeper_Tests.framework */; };
 		4AEBD4D640ED20CA659B434D /* Pods_Deeper_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1B3DD4DD0069D79AAA78BF /* Pods_Deeper_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -72,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				403B3C040C91E2E4411502AD /* Pods_Deeper_Tests.framework in Frameworks */,
+				403B3C040C91E2E4411502AD /* (null) in Frameworks */,
 				40ADD212BAE6FA89F3E85020 /* Pods_Deeper_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,12 +234,12 @@
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = QMPAK7CSJF;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1120;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = QMPAK7CSJF;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1120;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};

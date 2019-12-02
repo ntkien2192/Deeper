@@ -8,13 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Deeper'
-<<<<<<< HEAD
   s.version          = '0.3.9'
-    s.summary          = 'The perfect interface framework for your software'
-=======
-  s.version          = '0.3.8'
   s.summary          = 'The perfect interface framework for your software'
->>>>>>> 02802e1b23e39152a5a569cdf448cec1be4951f0
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
