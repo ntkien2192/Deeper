@@ -2,12 +2,11 @@
 //  ViewController.swift
 //  Deeper
 //
-//  Created by ntkien2192 on 10/28/2019.
+//  Created by ntkien2192 on 12/02/2019.
 //  Copyright (c) 2019 ntkien2192. All rights reserved.
 //
 
 import UIKit
-import Deeper
 
 class ViewController: UIViewController {
 

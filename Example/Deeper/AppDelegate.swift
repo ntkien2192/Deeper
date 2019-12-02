@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Deeper
 //
-//  Created by ntkien2192 on 10/28/2019.
+//  Created by ntkien2192 on 12/02/2019.
 //  Copyright (c) 2019 ntkien2192. All rights reserved.
 //
 
@@ -13,32 +13,26 @@ import Deeper
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
         
         _ = Deeper.on(window) { deeper in
-            _ = deeper.config { config in
-                config.set(theme: Theme.hemera)
-            }
+                    _ = deeper.config { config in
+                        config.set(theme: Theme.hemera)
+                    }
+                    
+                    _ = deeper.bind { store in
+                        
+                    }
+                    
+                    let start = Start.on()
+                    let welcome = Welcome.on()
             
-            _ = deeper.bind { store in
-                
-            }
-            
-            let start = Start.on()
-                .config({ config in
-//                    config.set(presentAnimation: true)
-                }).bind({ viewModel in
-                    let image = Image(Image.assest.logo.value)
-                    let copyrightInfo = Content("Power of Whale land", targets: ["Whale land"], displayType: .info)
-                    viewModel.set(image: image)
-                    viewModel.set(copyrightInfo: copyrightInfo)
-                })
-            
-            _ = deeper
-                .open(start)
-        }
+                    _ = deeper
+                        .open(start)
+                        .open(welcome)
+                }
         
         return true
     }
