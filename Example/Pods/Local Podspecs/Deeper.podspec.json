@@ -1,8 +1,8 @@
 {
   "name": "Deeper",
-  "version": "0.1.0",
-  "summary": "A short description of Deeper.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.4.0",
+  "summary": "The perfect interface framework for your software",
+  "description": "TODO: We try to create a interface framework that can meet the needs of a programmer from welcome, sign-up to more complex functions such as details, master pages.",
   "homepage": "https://github.com/ntkien2192/Deeper",
   "license": {
     "type": "MIT",
@@ -13,13 +13,12 @@
   },
   "source": {
     "git": "https://github.com/ntkien2192/Deeper.git",
-    "tag": "0.1.0"
+    "tag": "0.4.0"
   },
   "platforms": {
     "ios": "11.4"
   },
   "swift_versions": "5.0",
-  "source_files": "Deeper/Classes/**/*",
   "resource_bundles": {
     "Deeper": [
       "Deeper/Classes/**/*.{storyboard,xib,otf}",

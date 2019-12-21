@@ -205,8 +205,69 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 SWIFT_CLASS("_TtC6Deeper11Application")
 @interface Application : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC6Deeper5Alert")
+@interface Alert : Application
+@end
+
+
+SWIFT_CLASS("_TtC6Deeper5Store")
+@interface Store : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
+SWIFT_CLASS("_TtC6Deeper10AlertStore")
+@interface AlertStore : Store
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Deeper9ViewModel")
+@interface ViewModel : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Deeper14AlertViewModel")
+@interface AlertViewModel : ViewModel
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class CALayer;
+
+SWIFT_PROTOCOL("_TtP6Deeper10Animatable_")
+@protocol Animatable
+@property (nonatomic) BOOL autostart;
+@property (nonatomic) BOOL autohide;
+@property (nonatomic, copy) NSString * _Nonnull animation;
+@property (nonatomic) CGFloat force;
+@property (nonatomic) CGFloat delay;
+@property (nonatomic) CGFloat duration;
+@property (nonatomic) CGFloat damping;
+@property (nonatomic) CGFloat velocity;
+@property (nonatomic) float repeatCount;
+@property (nonatomic) CGFloat x;
+@property (nonatomic) CGFloat y;
+@property (nonatomic) CGFloat scaleX;
+@property (nonatomic) CGFloat scaleY;
+@property (nonatomic) CGFloat rotate;
+@property (nonatomic) CGFloat opacity;
+@property (nonatomic) BOOL animateFrom;
+@property (nonatomic, copy) NSString * _Nonnull curve;
+@property (nonatomic, readonly, strong) CALayer * _Nonnull layer;
+@property (nonatomic) CGAffineTransform transform;
+@property (nonatomic) CGFloat alpha;
+- (void)animate;
+- (void)animateNextWithCompletion:(void (^ _Nonnull)(void))completion;
+- (void)animateTo;
+- (void)animateToNextWithCompletion:(void (^ _Nonnull)(void))completion;
+@end
+
 
 
 SWIFT_CLASS("_TtC6Deeper17ApplicationConfig")
@@ -257,6 +318,25 @@ SWIFT_CLASS("_TtC6Deeper7Control")
 @end
 
 
+SWIFT_CLASS("_TtC6Deeper8DeObject")
+@interface DeObject : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Deeper13ControlConfig")
+@interface ControlConfig : DeObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC6Deeper14ControlContent")
+@interface ControlContent : Content
+@end
+
+
+
 SWIFT_CLASS("_TtC6Deeper6Deeper")
 @interface Deeper : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -291,6 +371,23 @@ SWIFT_CLASS("_TtC6Deeper8Localize")
 
 
 
+SWIFT_CLASS("_TtC6Deeper10Permission")
+@interface Permission : Application
+@end
+
+
+SWIFT_CLASS("_TtC6Deeper15PermissionStore")
+@interface PermissionStore : Store
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC6Deeper19PermissionViewModel")
+@interface PermissionViewModel : ViewModel
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC6Deeper6Spring")
 @interface Spring : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -298,126 +395,13 @@ SWIFT_CLASS("_TtC6Deeper6Spring")
 @end
 
 
-SWIFT_CLASS("_TtC6Deeper15SpringAnimation")
-@interface SpringAnimation : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class CALayer;
-
-SWIFT_PROTOCOL("_TtP6Deeper10Springable_")
-@protocol Springable
-@property (nonatomic) BOOL autostart;
-@property (nonatomic) BOOL autohide;
-@property (nonatomic, copy) NSString * _Nonnull animation;
-@property (nonatomic) CGFloat force;
-@property (nonatomic) CGFloat delay;
-@property (nonatomic) CGFloat duration;
-@property (nonatomic) CGFloat damping;
-@property (nonatomic) CGFloat velocity;
-@property (nonatomic) float repeatCount;
-@property (nonatomic) CGFloat x;
-@property (nonatomic) CGFloat y;
-@property (nonatomic) CGFloat scaleX;
-@property (nonatomic) CGFloat scaleY;
-@property (nonatomic) CGFloat rotate;
-@property (nonatomic) CGFloat opacity;
-@property (nonatomic) BOOL animateFrom;
-@property (nonatomic, copy) NSString * _Nonnull curve;
-@property (nonatomic, readonly, strong) CALayer * _Nonnull layer;
-@property (nonatomic) CGAffineTransform transform;
-@property (nonatomic) CGFloat alpha;
-- (void)animate;
-- (void)animateNextWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)animateTo;
-- (void)animateToNextWithCompletion:(void (^ _Nonnull)(void))completion;
-@end
-
-@class NSCoder;
-
-SWIFT_CLASS("_TtC6Deeper15SpringTextField")
-@interface SpringTextField : UITextField <Springable>
-@property (nonatomic) BOOL autostart;
-@property (nonatomic) BOOL autohide;
-@property (nonatomic, copy) NSString * _Nonnull animation;
-@property (nonatomic) CGFloat force;
-@property (nonatomic) CGFloat delay;
-@property (nonatomic) CGFloat duration;
-@property (nonatomic) CGFloat damping;
-@property (nonatomic) CGFloat velocity;
-@property (nonatomic) float repeatCount;
-@property (nonatomic) CGFloat x;
-@property (nonatomic) CGFloat y;
-@property (nonatomic) CGFloat scaleX;
-@property (nonatomic) CGFloat scaleY;
-@property (nonatomic) CGFloat rotate;
-@property (nonatomic, copy) NSString * _Nonnull curve;
-@property (nonatomic) CGFloat opacity;
-@property (nonatomic) BOOL animateFrom;
-- (void)awakeFromNib;
-- (void)layoutSubviews;
-- (void)animate;
-- (void)animateNextWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)animateTo;
-- (void)animateToNextWithCompletion:(void (^ _Nonnull)(void))completion;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class NSTextContainer;
-
-SWIFT_CLASS("_TtC6Deeper14SpringTextView")
-@interface SpringTextView : UITextView <Springable>
-@property (nonatomic) BOOL autostart;
-@property (nonatomic) BOOL autohide;
-@property (nonatomic, copy) NSString * _Nonnull animation;
-@property (nonatomic) CGFloat force;
-@property (nonatomic) CGFloat delay;
-@property (nonatomic) CGFloat duration;
-@property (nonatomic) CGFloat damping;
-@property (nonatomic) CGFloat velocity;
-@property (nonatomic) float repeatCount;
-@property (nonatomic) CGFloat x;
-@property (nonatomic) CGFloat y;
-@property (nonatomic) CGFloat scaleX;
-@property (nonatomic) CGFloat scaleY;
-@property (nonatomic) CGFloat rotate;
-@property (nonatomic, copy) NSString * _Nonnull curve;
-@property (nonatomic) CGFloat opacity;
-@property (nonatomic) BOOL animateFrom;
-- (void)awakeFromNib;
-- (void)layoutSubviews;
-- (void)animate;
-- (void)animateNextWithCompletion:(void (^ _Nonnull)(void))completion;
-- (void)animateTo;
-- (void)animateToNextWithCompletion:(void (^ _Nonnull)(void))completion;
-- (nonnull instancetype)initWithFrame:(CGRect)frame textContainer:(NSTextContainer * _Nullable)textContainer OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=7.0);
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
 SWIFT_CLASS("_TtC6Deeper5Start")
 @interface Start : Application
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC6Deeper5Store")
-@interface Store : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 SWIFT_CLASS("_TtC6Deeper10StartStore")
 @interface StartStore : Store
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC6Deeper9ViewModel")
-@interface ViewModel : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -437,14 +421,16 @@ SWIFT_CLASS("_TtC6Deeper14StartViewModel")
 @end
 
 
+
+
 @interface UIColor (SWIFT_EXTENSION(Deeper))
 @end
 
 
+
+
 @interface UIFont (SWIFT_EXTENSION(Deeper))
 @end
-
-
 
 
 
@@ -471,6 +457,9 @@ SWIFT_CLASS("_TtC6Deeper14StartViewModel")
 
 
 
+
+@class NSCoder;
+
 SWIFT_CLASS("_TtC6Deeper14ViewController")
 @interface ViewController : UIViewController
 @property (nonatomic, readonly) UIStatusBarAnimation preferredStatusBarUpdateAnimation;
@@ -491,8 +480,6 @@ SWIFT_CLASS("_TtC6Deeper20ViewControllerConfig")
 
 SWIFT_CLASS("_TtC6Deeper7Welcome")
 @interface Welcome : Application
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 

@@ -1,5 +1,5 @@
 PODS:
-  - Deeper (0.1.0):
+  - Deeper (0.4.0):
     - RealmSwift
     - RxCocoa (~> 5)
     - RxDataSources
@@ -55,7 +55,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Deeper: 613419667e9c892d17fa3c3144d8b109ba8b5d7d
+  Deeper: 67d82007c56869968143163dbdd08501b1ef5fb8
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
   Realm: 25f0a8244cbb1c2271c922963ea8666fc2d8104d
