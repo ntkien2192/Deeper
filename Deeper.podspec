@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Deeper'
-  s.version          = '0.4.0'
+  s.version          = '0.4.1'
   s.summary          = 'The perfect interface framework for your software'
 
   # This description is used to generate tags and improve search results.
@@ -44,10 +44,5 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
-  s.dependency 'RxSwift', '~> 5'
-  s.dependency 'RxCocoa', '~> 5'
-  s.dependency 'RxDataSources'
-  s.dependency 'RealmSwift'
-  s.dependency 'SDWebImage/WebP'
   s.vendored_frameworks = 'Deeper/Resources/Deeper.framework'
 end
